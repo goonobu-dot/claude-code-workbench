@@ -1,5 +1,9 @@
 # Claude Code Workbench
 
+[![CI](https://github.com/goonobu-dot/claude-code-workbench/actions/workflows/ci.yml/badge.svg)](https://github.com/goonobu-dot/claude-code-workbench/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/goonobu-dot/claude-code-workbench)](https://github.com/goonobu-dot/claude-code-workbench/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A macOS/tmux workbench for running up to 9 Claude Code CLI sessions in one Terminal window.
 
 This is a focused public version of a real local workflow: launch several Claude Code panes, point them at one shared idea folder, and use them for research, ideation, implementation planning, and comparison.
@@ -41,6 +45,12 @@ mkdir -p "$HOME/ClaudeCodeWorkbench"
 git clone <your-fork-url> "$HOME/ClaudeCodeWorkbench/claude-code-workbench"
 cd "$HOME/ClaudeCodeWorkbench/claude-code-workbench"
 ./scripts/launch_claude_tmux.sh
+```
+
+Check your local setup without starting a workbench session:
+
+```bash
+./scripts/doctor.sh
 ```
 
 All panes use one shared idea folder by default:
@@ -97,6 +107,11 @@ The generated app opens Terminal and launches the tmux workbench. The checked-in
 ## Workflow Recipes
 
 See [docs/workflows.md](docs/workflows.md) for practical ways to use the panes without creating noise.
+
+See also:
+
+- [docs/oss-maintainer-use-cases.md](docs/oss-maintainer-use-cases.md)
+- [docs/showcase.md](docs/showcase.md)
 
 ## Safety Notes
 

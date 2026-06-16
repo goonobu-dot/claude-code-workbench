@@ -1,0 +1,26 @@
+name: Workflow idea
+description: Suggest a new multi-agent workflow pattern
+title: "[Workflow]: "
+labels: ["workflow"]
+body:
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: What maintainer or research workflow would this help?
+    validations:
+      required: true
+  - type: textarea
+    id: pane-roles
+    attributes:
+      label: Suggested pane roles
+      description: List the role for each pane.
+      placeholder: |
+        Pane 1:
+        Pane 2:
+        Pane 3:
+  - type: textarea
+    id: output
+    attributes:
+      label: Expected output files
+      description: What should the workflow produce?

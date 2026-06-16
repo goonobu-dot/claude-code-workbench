@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a problem with Claude Code Workbench
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include commands, pane count, and relevant environment variables.
+      placeholder: |
+        1. Run ...
+        2. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Doctor output
+      description: Paste the output of ./scripts/doctor.sh if possible.
+      render: text
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: macOS version, tmux version, Claude Code CLI install path.

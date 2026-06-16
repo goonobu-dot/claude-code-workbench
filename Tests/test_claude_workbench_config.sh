@@ -47,6 +47,9 @@ check_contains scripts/send_enter_to_claude_tmux.applescript 'claude-code-9'
 check_contains scripts/create_app_icon.py 'ClaudeCode9Panes.iconset'
 check_contains scripts/create_app_icon.py 'ClaudeCode9Panes.png'
 check_contains scripts/create_app_icon.py '"9"'
+check_contains scripts/doctor.sh 'Claude Code Workbench doctor'
+check_contains README.md 'docs/oss-maintainer-use-cases.md'
+check_contains README.md 'docs/showcase.md'
 
 check_not_contains scripts/launch_claude_tmux.sh "$private_home"
 check_not_contains scripts/launch_claude_tmux.applescript "$private_home"
