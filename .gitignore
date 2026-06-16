@@ -1,0 +1,13 @@
+.DS_Store
+*.log
+*.sqlite
+*.sqlite3
+*.db
+.env
+.env.*
+dist/
+build/
+.build/
+*.app/
+Assets/*.iconset/
+__pycache__/

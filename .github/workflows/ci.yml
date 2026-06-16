@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check shell syntax
+        run: bash -n scripts/*.sh Tests/*.sh
+      - name: Check workbench config
+        run: ./Tests/test_claude_workbench_config.sh
+      - name: Public safety audit
+        run: ./scripts/audit_public_safety.sh

@@ -1,0 +1,114 @@
+# Claude Code Workbench
+
+A macOS/tmux workbench for running up to 9 Claude Code CLI sessions in one Terminal window.
+
+This is a focused public version of a real local workflow: launch several Claude Code panes, point them at one shared idea folder, and use them for research, ideation, implementation planning, and comparison.
+
+This project is not affiliated with Anthropic.
+
+## Why This Exists
+
+One AI-agent chat is useful. Several panes are better when you want independent angles on the same problem.
+
+Use this workbench for:
+
+- parallel research
+- competing solution ideas
+- feature planning
+- review and risk checks
+- collecting outputs into one shared folder
+- keeping a repeatable Claude Code multi-pane setup
+
+## Requirements
+
+- macOS
+- `tmux`
+- Claude Code CLI installed as `claude` or configured with `CLAUDE_WORKBENCH_COMMAND`
+- Python 3 and Pillow only if you regenerate the icon
+
+Install tmux with Homebrew:
+
+```bash
+brew install tmux
+```
+
+## Quick Start
+
+Clone or copy this repository to the default local location:
+
+```bash
+mkdir -p "$HOME/ClaudeCodeWorkbench"
+git clone <your-fork-url> "$HOME/ClaudeCodeWorkbench/claude-code-workbench"
+cd "$HOME/ClaudeCodeWorkbench/claude-code-workbench"
+./scripts/launch_claude_tmux.sh
+```
+
+All panes use one shared idea folder by default:
+
+```bash
+~/ClaudeCodeWorkbench/Idea
+```
+
+## Controls
+
+The workbench uses tmux. The prefix is usually `control-b`.
+
+- `control-b z`: zoom or unzoom the active pane
+- mouse support is enabled
+- each pane starts a separate Claude Code session
+
+## Configuration
+
+```bash
+CLAUDE_WORKBENCH_PANE_COUNT=4 ./scripts/launch_claude_tmux.sh
+CLAUDE_WORKBENCH_BASE="$HOME/ClaudeCodeWorkbench" ./scripts/launch_claude_tmux.sh
+CLAUDE_WORKBENCH_IDEA_DIR="$HOME/ClaudeCodeWorkbench/Research" ./scripts/launch_claude_tmux.sh
+CLAUDE_WORKBENCH_COMMAND="/opt/homebrew/bin/claude" ./scripts/launch_claude_tmux.sh
+CLAUDE_WORKBENCH_MODEL="sonnet" ./scripts/launch_claude_tmux.sh
+CLAUDE_WORKBENCH_AUTO_SUBMIT=0 ./scripts/launch_claude_tmux.sh
+```
+
+Defaults:
+
+| Setting | Default |
+| --- | --- |
+| `CLAUDE_WORKBENCH_PANE_COUNT` | `9` |
+| `CLAUDE_WORKBENCH_SESSION` | `claude-code-9` |
+| `CLAUDE_WORKBENCH_BASE` | `~/ClaudeCodeWorkbench` |
+| `CLAUDE_WORKBENCH_IDEA_DIR` | `~/ClaudeCodeWorkbench/Idea` |
+| `CLAUDE_WORKBENCH_MODEL` | `sonnet` |
+| `CLAUDE_WORKBENCH_EFFORT` | `low` |
+| `CLAUDE_WORKBENCH_PERMISSION_MODE` | `auto` |
+| `CLAUDE_WORKBENCH_AUTO_SUBMIT` | `1` |
+
+## Build The macOS App
+
+```bash
+./scripts/build_claude_app.sh
+open "$HOME/Applications/Claude Code Workbench.app"
+```
+
+The generated app opens Terminal and launches the tmux workbench. The checked-in AppleScript does not contain a personal path. By default, it expects this repository at:
+
+```bash
+~/ClaudeCodeWorkbench/claude-code-workbench
+```
+
+## Workflow Recipes
+
+See [docs/workflows.md](docs/workflows.md) for practical ways to use the panes without creating noise.
+
+## Safety Notes
+
+This repository intentionally does not include local logs, `.env` files, prompt histories, Obsidian vaults, generated agent output, or app bundles.
+
+Before publishing your own fork, run:
+
+```bash
+./Tests/test_claude_workbench_config.sh
+./scripts/audit_public_safety.sh
+```
+
+## Project Status
+
+This is an early public release. It is intentionally small: shell scripts, AppleScript launchers, generated icon assets, tests, and CI.
