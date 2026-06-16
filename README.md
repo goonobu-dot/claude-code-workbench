@@ -60,6 +60,12 @@ Create a reusable maintainer workflow folder before launching panes:
 CLAUDE_WORKBENCH_IDEA_DIR="$HOME/ClaudeCodeWorkbench/Idea" ./scripts/launch_claude_tmux.sh
 ```
 
+After the panes write their notes, create a handoff summary:
+
+```bash
+./scripts/close_workflow.sh "$HOME/ClaudeCodeWorkbench/Idea"
+```
+
 All panes use one shared idea folder by default:
 
 ```bash

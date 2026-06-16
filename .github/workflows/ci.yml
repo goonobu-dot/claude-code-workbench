@@ -17,3 +17,9 @@ jobs:
         run: ./Tests/test_claude_workbench_config.sh
       - name: Public safety audit
         run: ./scripts/audit_public_safety.sh
+      - name: Workflow template smoke test
+        run: |
+          tmpdir="$(mktemp -d)"
+          ./scripts/new_workflow.sh issue-triage "$tmpdir"
+          ./scripts/close_workflow.sh "$tmpdir"
+          test -f "$tmpdir/handoff-summary.md"
