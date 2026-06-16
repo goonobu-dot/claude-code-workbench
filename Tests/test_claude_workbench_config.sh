@@ -48,8 +48,11 @@ check_contains scripts/create_app_icon.py 'ClaudeCode9Panes.iconset'
 check_contains scripts/create_app_icon.py 'ClaudeCode9Panes.png'
 check_contains scripts/create_app_icon.py '"9"'
 check_contains scripts/doctor.sh 'Claude Code Workbench doctor'
+check_contains scripts/new_workflow.sh 'issue-triage'
+check_contains scripts/new_workflow.sh 'CLAUDE_WORKBENCH_IDEA_DIR'
 check_contains README.md 'docs/oss-maintainer-use-cases.md'
 check_contains README.md 'docs/showcase.md'
+check_contains README.md 'docs/workflow-templates.md'
 
 check_not_contains scripts/launch_claude_tmux.sh "$private_home"
 check_not_contains scripts/launch_claude_tmux.applescript "$private_home"
