@@ -42,6 +42,7 @@
 - Added `docs/why.md`.
 - Added `docs/publication-checklist.md`.
 - Added GitHub issue template contact links for commands and troubleshooting.
+- Added `./scripts/new_workflow.sh --list --verbose`.
 
 ## v0.5.0
 

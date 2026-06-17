@@ -8,6 +8,7 @@ The goal is to make a 4/6/9-pane session concrete before launching agents. Each 
 
 ```bash
 ./scripts/new_workflow.sh --list
+./scripts/new_workflow.sh --list --verbose
 ./scripts/new_workflow.sh issue-triage
 ./scripts/new_workflow.sh pr-review
 ./scripts/new_workflow.sh release-prep

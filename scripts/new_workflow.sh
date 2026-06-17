@@ -9,6 +9,7 @@ usage() {
 Usage:
   ./scripts/new_workflow.sh <workflow> [destination]
   ./scripts/new_workflow.sh --list
+  ./scripts/new_workflow.sh --list --verbose
 
 Workflows:
   issue-triage
@@ -23,6 +24,15 @@ EOF
 }
 
 list_workflows() {
+  if [[ "${1:-}" == "--verbose" ]]; then
+    cat <<'EOF'
+issue-triage - Reproducing, classifying, and planning an issue.
+pr-review - Reviewing a pull request from multiple angles.
+release-prep - Preparing a small release.
+feature-discovery - Turning a feature idea into scope and tests.
+EOF
+    return
+  fi
   cat <<'EOF'
 issue-triage
 pr-review
@@ -32,7 +42,7 @@ EOF
 }
 
 if [[ "$WORKFLOW" == "--list" ]]; then
-  list_workflows
+  list_workflows "${2:-}"
   exit 0
 fi
 

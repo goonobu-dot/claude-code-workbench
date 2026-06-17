@@ -76,6 +76,7 @@ check_contains Makefile './scripts/audit_public_safety.sh'
 check_contains Makefile './scripts/check_docs_links.sh'
 check_contains scripts/new_workflow.sh 'issue-triage'
 check_contains scripts/new_workflow.sh '--list'
+check_contains scripts/new_workflow.sh '--verbose'
 check_contains scripts/new_workflow.sh 'list_workflows'
 check_contains scripts/new_workflow.sh 'CLAUDE_WORKBENCH_IDEA_DIR'
 check_contains scripts/new_workflow.sh 'generate_role_prompts'
@@ -195,6 +196,7 @@ check_contains docs/workflow-sharing.md './scripts/import_workflow.sh'
 check_contains docs/workflow-sharing.md 'Path traversal'
 check_contains docs/workflow-templates.md './scripts/create_workflow_from_url.sh'
 check_contains docs/workflow-templates.md './scripts/new_workflow.sh --list'
+check_contains docs/workflow-templates.md './scripts/new_workflow.sh --list --verbose'
 check_contains examples/README.md 'issue-triage-demo'
 check_contains examples/README.md 'docs/workflow-sharing.md'
 check_contains examples/README.md 'pr-review-demo'
@@ -240,6 +242,7 @@ check_contains "$doctor_report" '```text'
 
 ./scripts/new_workflow.sh --list | grep -Fq 'issue-triage' || { echo "workflow list missing issue-triage"; fail=1; }
 ./scripts/new_workflow.sh --list | grep -Fq 'feature-discovery' || { echo "workflow list missing feature-discovery"; fail=1; }
+./scripts/new_workflow.sh --list --verbose | grep -Fq 'Reviewing a pull request' || { echo "verbose workflow list missing PR description"; fail=1; }
 make demo >/dev/null
 make doctor-report >/dev/null || true
 test -f doctor-report.md || { echo "missing doctor-report.md"; fail=1; }
