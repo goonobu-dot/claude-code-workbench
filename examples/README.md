@@ -6,6 +6,7 @@ Examples show what the workbench produces when used for real maintainer-style ta
 
 - [issue-triage-demo](issue-triage-demo) - a fictional issue triage workflow with pane roles, sample pane outputs, final triage, and handoff summary.
 - [pr-review-demo](pr-review-demo) - a fictional pull request review workflow with review angles, sample pane outputs, final review, and handoff summary.
+- [release-prep-demo](release-prep-demo) - a fictional release preparation workflow with changelog review, checklist, release notes, and handoff summary.
 - [feature-discovery-demo](feature-discovery-demo) - a fictional feature discovery workflow that turns a rough idea into a scoped decision memo.
 
 ## Why Examples Matter
