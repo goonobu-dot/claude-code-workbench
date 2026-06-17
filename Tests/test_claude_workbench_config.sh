@@ -89,11 +89,13 @@ check_contains scripts/close_workflow.sh 'Empty Sections To Fill'
 check_contains scripts/close_workflow.sh 'display_workflow_dir'
 check_contains scripts/close_workflow.sh '<outside-current-directory>'
 check_contains scripts/export_workflow.sh 'Workflow export ready'
+check_contains scripts/export_workflow.sh 'workflow-manifest.json'
 check_contains scripts/export_workflow.sh 'Potential private data found'
 check_contains scripts/validate_workflow.sh 'Workflow validation passed'
 check_contains scripts/validate_workflow.sh 'Missing required workflow file'
 check_contains scripts/validate_workflow.sh 'Potential private data found'
 check_contains scripts/import_workflow.sh 'Workflow import ready'
+check_contains scripts/import_workflow.sh 'workflow-manifest.json'
 check_contains scripts/import_workflow.sh 'Unsafe archive path'
 check_contains README.md 'docs/oss-maintainer-use-cases.md'
 check_contains README.md 'docs/showcase.md'
@@ -209,9 +211,11 @@ export_file="$tmp_home/export-workflow.tar.gz"
 ./scripts/export_workflow.sh "$export_dir" "$export_file" >/dev/null
 test -f "$export_file" || { echo "missing export file: $export_file"; fail=1; }
 tar -tzf "$export_file" | grep -Fq 'export-workflow/question.md' || { echo "missing question.md in export"; fail=1; }
+tar -tzf "$export_file" | grep -Fq 'export-workflow/workflow-manifest.json' || { echo "missing workflow manifest in export"; fail=1; }
 import_dir="$tmp_home/imported"
 ./scripts/import_workflow.sh "$export_file" "$import_dir" >/dev/null
 test -f "$import_dir/export-workflow/question.md" || { echo "missing imported question.md"; fail=1; }
+test -f "$import_dir/export-workflow/workflow-manifest.json" || { echo "missing imported workflow manifest"; fail=1; }
 private_export_path='/'"Users"'/admin/private'
 printf '# Leak\n\n%s\n' "$private_export_path" >"$export_dir/leak.md"
 if ./scripts/validate_workflow.sh "$export_dir" >/dev/null 2>&1; then

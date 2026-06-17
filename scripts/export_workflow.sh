@@ -38,6 +38,7 @@ import re
 import sys
 import tarfile
 import tempfile
+import json
 from pathlib import Path
 
 workflow_dir = Path(sys.argv[1]).resolve()
@@ -80,6 +81,18 @@ try:
         for path in markdown_files:
             rel = path.relative_to(workflow_dir)
             archive.add(path, arcname=str(Path(archive_root) / rel), recursive=False)
+        manifest = {
+            "format": "claude-code-workbench.workflow.v1",
+            "workflow": archive_root,
+            "files": [str(path.relative_to(workflow_dir)) for path in markdown_files],
+        }
+        manifest_bytes = json.dumps(manifest, indent=2, sort_keys=True).encode("utf-8")
+        manifest_info = tarfile.TarInfo(str(Path(archive_root) / "workflow-manifest.json"))
+        manifest_info.size = len(manifest_bytes)
+        with tempfile.TemporaryFile() as manifest_file:
+            manifest_file.write(manifest_bytes)
+            manifest_file.seek(0)
+            archive.addfile(manifest_info, manifest_file)
     tmp_path.replace(output_file)
 finally:
     if tmp_path.exists():

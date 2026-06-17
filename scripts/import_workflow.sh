@@ -11,7 +11,8 @@ Usage:
 
 Safely imports a workflow archive created by export_workflow.sh.
 The importer refuses absolute paths, parent-directory traversal,
-non-markdown files, symlinks, hard links, and special files.
+non-markdown files except workflow-manifest.json, symlinks, hard links,
+and special files.
 EOF
 }
 
@@ -54,7 +55,7 @@ try:
                 fail(f"Unsafe archive path: {raw_name}")
             if not member.isfile():
                 fail(f"Unsafe archive member type: {raw_name}")
-            if rel.suffix != ".md":
+            if rel.suffix != ".md" and rel.name != "workflow-manifest.json":
                 fail(f"Only markdown files can be imported: {raw_name}")
 
             target = (dest_dir / Path(*rel.parts)).resolve()

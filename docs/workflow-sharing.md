@@ -29,6 +29,7 @@ Then export only markdown files:
 ```
 
 The exporter refuses obvious private data, including local absolute paths, API keys, access tokens, private keys, and local-only data references.
+It also includes `workflow-manifest.json` so imported archives have a small machine-readable file list.
 
 ## Import A Shared Workflow
 
