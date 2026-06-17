@@ -8,6 +8,12 @@ This project is intentionally small, but first-run failures usually come from lo
 ./scripts/doctor.sh
 ```
 
+To create a Markdown report you can attach to an issue, run:
+
+```bash
+./scripts/doctor.sh --report doctor-report.md
+```
+
 The doctor checks:
 
 - `tmux`

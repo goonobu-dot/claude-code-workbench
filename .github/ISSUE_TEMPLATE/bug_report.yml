@@ -23,9 +23,9 @@ body:
   - type: textarea
     id: doctor
     attributes:
-      label: Doctor output
-      description: Paste the output of ./scripts/doctor.sh if possible.
-      render: text
+      label: Doctor report
+      description: Run ./scripts/doctor.sh --report doctor-report.md and paste the generated report if possible.
+      render: markdown
   - type: textarea
     id: environment
     attributes:

@@ -20,6 +20,8 @@
 - Surfaced the GitHub URL workflow helper in the README and showcase.
 - Added a usage report issue template so adopters can share successful workflows and setup friction.
 - Added `docs/one-minute-demo.md` for a faster first evaluation path.
+- Added `./scripts/doctor.sh --report` for shareable Markdown diagnostics.
+- Updated the bug report template to request the generated doctor report.
 
 ## v0.5.0
 

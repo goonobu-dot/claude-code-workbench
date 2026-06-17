@@ -52,6 +52,8 @@ check_contains scripts/doctor.sh 'Claude Code Workbench doctor'
 check_contains scripts/doctor.sh 'Suggested fixes:'
 check_contains scripts/doctor.sh 'brew install tmux'
 check_contains scripts/doctor.sh 'CLAUDE_WORKBENCH_COMMAND'
+check_contains scripts/doctor.sh '--report'
+check_contains scripts/doctor.sh 'Doctor report written to:'
 check_contains scripts/install.sh 'Claude Code Workbench installer'
 check_contains scripts/install.sh 'CLAUDE_WORKBENCH_INSTALL_DIR'
 check_contains Makefile 'test:'
@@ -74,6 +76,8 @@ check_contains .github/workflows/ci.yml 'make install-smoke'
 check_contains .github/ISSUE_TEMPLATE/usage_report.yml 'Usage report'
 check_contains .github/ISSUE_TEMPLATE/usage_report.yml 'Which workflow did you run?'
 check_contains .github/ISSUE_TEMPLATE/usage_report.yml 'What did the workbench help you decide or produce?'
+check_contains .github/ISSUE_TEMPLATE/bug_report.yml './scripts/doctor.sh --report doctor-report.md'
+check_contains .github/ISSUE_TEMPLATE/bug_report.yml 'Doctor report'
 check_contains scripts/launch_claude_tmux.sh 'CLAUDE_WORKBENCH_USE_ROLE_PROMPTS'
 check_contains scripts/launch_claude_tmux.sh 'ROLE_PROMPT_DIR'
 check_contains scripts/close_workflow.sh 'Workflow Handoff Summary'
@@ -127,6 +131,7 @@ check_not_contains docs/workflows.md './Tests/test_claude_workbench_config.sh'
 check_contains docs/troubleshooting.md 'Run The Doctor'
 check_contains docs/troubleshooting.md 'CLAUDE_WORKBENCH_COMMAND'
 check_contains docs/troubleshooting.md 'CLAUDE_WORKBENCH_AUTO_SUBMIT=0'
+check_contains docs/troubleshooting.md './scripts/doctor.sh --report doctor-report.md'
 check_contains docs/workflow-sharing.md 'Export A Workflow'
 check_contains docs/workflow-sharing.md './scripts/export_workflow.sh'
 check_contains docs/workflow-sharing.md './scripts/import_workflow.sh'
@@ -159,6 +164,13 @@ printf '# Note\n\n## Empty\n' >"$workflow_dir/note.md"
 HOME="$tmp_home" ./scripts/close_workflow.sh "$workflow_dir" "$workflow_dir/handoff-summary.md" >/dev/null
 check_contains "$workflow_dir/handoff-summary.md" 'Workflow directory: `~/Idea/test-workflow`'
 check_not_contains "$workflow_dir/handoff-summary.md" "$tmp_home"
+
+doctor_report="$tmp_home/doctor-report.md"
+./scripts/doctor.sh --report "$doctor_report" >/dev/null || true
+test -f "$doctor_report" || { echo "missing doctor report"; fail=1; }
+check_contains "$doctor_report" '# Claude Code Workbench Doctor Report'
+check_contains "$doctor_report" '## Raw Output'
+check_contains "$doctor_report" '```text'
 
 export_dir="$tmp_home/Idea/export-workflow"
 mkdir -p "$export_dir/prompts"
