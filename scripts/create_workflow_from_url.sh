@@ -46,8 +46,9 @@ owner, repo, kind, number = match.groups()
 workflow = "issue-triage" if kind == "issues" else "pr-review"
 slug = f"{owner}-{repo}-{'issue' if kind == 'issues' else 'pr'}-{number}"
 dest = Path(dest_arg).expanduser() if dest_arg else base_dir / "Idea" / slug
+canonical_url = f"https://github.com/{owner}/{repo}/{kind}/{number}"
 
-for value in (workflow, str(dest), owner, repo, kind, number):
+for value in (workflow, str(dest), owner, repo, kind, number, canonical_url):
     print(value)
 PY
 
@@ -57,6 +58,7 @@ OWNER="$(sed -n '3p' "$parsed_file")"
 REPO="$(sed -n '4p' "$parsed_file")"
 KIND="$(sed -n '5p' "$parsed_file")"
 NUMBER="$(sed -n '6p' "$parsed_file")"
+CANONICAL_URL="$(sed -n '7p' "$parsed_file")"
 
 "$SCRIPT_DIR/new_workflow.sh" "$WORKFLOW" "$DEST_DIR" >/dev/null
 
@@ -72,6 +74,7 @@ cat >"$DEST_DIR/question.md" <<EOF
 # $TITLE
 
 Source URL: $SOURCE_URL
+Canonical URL: $CANONICAL_URL
 
 Repository: $OWNER/$REPO
 $ITEM_LABEL: #$NUMBER
