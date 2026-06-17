@@ -31,6 +31,7 @@
 - Added `workflow-manifest.json` to exported workflow archives.
 - Added `docs/faq.md` for local safety, GitHub visibility, and API-key boundaries.
 - Added `make doctor-report` for issue-ready diagnostics.
+- Added `docs/commands.md`.
 
 ## v0.5.0
 
