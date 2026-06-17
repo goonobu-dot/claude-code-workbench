@@ -177,6 +177,7 @@ See also:
 - [docs/workflow-templates.md](docs/workflow-templates.md)
 - [docs/workflow-sharing.md](docs/workflow-sharing.md)
 - [docs/troubleshooting.md](docs/troubleshooting.md)
+- [docs/faq.md](docs/faq.md)
 - [docs/openai-codex-for-oss.md](docs/openai-codex-for-oss.md)
 - [docs/adoption-plan.md](docs/adoption-plan.md)
 
