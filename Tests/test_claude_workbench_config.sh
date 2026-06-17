@@ -58,6 +58,10 @@ check_contains scripts/close_workflow.sh 'Empty Sections To Fill'
 check_contains README.md 'docs/oss-maintainer-use-cases.md'
 check_contains README.md 'docs/showcase.md'
 check_contains README.md 'docs/workflow-templates.md'
+check_contains README.md 'examples/issue-triage-demo'
+check_contains examples/issue-triage-demo/README.md 'Fictional demo'
+check_contains examples/issue-triage-demo/final-triage.md 'Recommended Fix'
+check_contains examples/issue-triage-demo/handoff-summary.md 'Workflow Handoff Summary'
 
 check_not_contains scripts/launch_claude_tmux.sh "$private_home"
 check_not_contains scripts/launch_claude_tmux.applescript "$private_home"
