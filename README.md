@@ -138,6 +138,7 @@ See also:
 Example:
 
 - [examples/issue-triage-demo](examples/issue-triage-demo)
+- [examples/pr-review-demo](examples/pr-review-demo)
 
 Project operations:
 

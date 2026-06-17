@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Added `examples/pr-review-demo`, a fictional end-to-end pull request review workflow.
+
 ## v0.5.0
 
 - Added `examples/issue-triage-demo`, a fictional end-to-end maintainer workflow.

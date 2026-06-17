@@ -20,6 +20,7 @@ Open-source maintainers often compare tools and approaches. A shared workflow pa
 - `scripts/new_workflow.sh` creates structured maintainer workflows.
 - `scripts/close_workflow.sh` creates reviewable handoff summaries.
 - `examples/issue-triage-demo` shows a fictional end-to-end issue triage flow.
+- `examples/pr-review-demo` shows a fictional pull request review flow.
 
 ## Relationship To Codex Work
 

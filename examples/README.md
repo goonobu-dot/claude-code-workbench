@@ -5,6 +5,7 @@ Examples show what the workbench produces when used for real maintainer-style ta
 ## Available Examples
 
 - [issue-triage-demo](issue-triage-demo) - a fictional issue triage workflow with pane roles, sample pane outputs, final triage, and handoff summary.
+- [pr-review-demo](pr-review-demo) - a fictional pull request review workflow with review angles, sample pane outputs, final review, and handoff summary.
 
 ## Why Examples Matter
 

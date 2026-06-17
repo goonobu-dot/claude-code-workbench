@@ -67,9 +67,13 @@ check_contains CHANGELOG.md 'v0.5.0'
 check_contains docs/openai-codex-for-oss.md 'Relationship To Codex Work'
 check_contains docs/adoption-plan.md 'Do not fake adoption'
 check_contains examples/README.md 'issue-triage-demo'
+check_contains examples/README.md 'pr-review-demo'
 check_contains examples/issue-triage-demo/README.md 'Fictional demo'
 check_contains examples/issue-triage-demo/final-triage.md 'Recommended Fix'
 check_contains examples/issue-triage-demo/handoff-summary.md 'Workflow Handoff Summary'
+check_contains examples/pr-review-demo/README.md 'Fictional demo'
+check_contains examples/pr-review-demo/final-review.md 'Review Verdict'
+check_contains examples/pr-review-demo/handoff-summary.md 'Workflow Handoff Summary'
 
 check_not_contains scripts/launch_claude_tmux.sh "$private_home"
 check_not_contains scripts/launch_claude_tmux.applescript "$private_home"
