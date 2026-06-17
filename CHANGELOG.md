@@ -46,6 +46,7 @@
 - Added canonical GitHub URLs to workflows created from issue or pull request URLs.
 - Added a `Suggested Fixes` section to generated doctor reports.
 - Added `SUPPORT.md` with first-check, troubleshooting, and issue-reporting guidance.
+- Added `docs/quality-gates.md` to explain local, safety, CI, and user-reproduction checks.
 
 ## v0.5.0
 

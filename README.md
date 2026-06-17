@@ -178,6 +178,7 @@ See also:
 - [docs/one-minute-demo.md](docs/one-minute-demo.md)
 - [docs/commands.md](docs/commands.md)
 - [docs/architecture.md](docs/architecture.md)
+- [docs/quality-gates.md](docs/quality-gates.md)
 - [docs/workflow-templates.md](docs/workflow-templates.md)
 - [docs/workflow-sharing.md](docs/workflow-sharing.md)
 - [docs/troubleshooting.md](docs/troubleshooting.md)
