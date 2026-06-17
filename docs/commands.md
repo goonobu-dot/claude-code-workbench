@@ -7,6 +7,7 @@ make demo
 make doctor
 make doctor-report
 make test
+make release-check
 ```
 
 ## Workflow Creation

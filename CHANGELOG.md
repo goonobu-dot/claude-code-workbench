@@ -35,6 +35,7 @@
 - Updated installer next-step guidance for `make demo`, workflow listing, and doctor reports.
 - Added `docs/architecture.md`.
 - Added `scripts/check_docs_links.sh` to catch broken local documentation links in CI.
+- Added `make release-check` for pre-release validation.
 
 ## v0.5.0
 

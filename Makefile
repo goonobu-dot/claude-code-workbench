@@ -1,4 +1,4 @@
-.PHONY: help doctor doctor-report demo test syntax safety smoke install-smoke
+.PHONY: help doctor doctor-report demo test syntax safety smoke install-smoke release-check
 
 help:
 	@printf '%s\n' \
@@ -10,7 +10,8 @@ help:
 		'  make syntax        Check shell script syntax' \
 		'  make safety        Run public safety audit' \
 		'  make smoke         Generate and close every workflow template' \
-		'  make install-smoke Exercise the installer against this checkout'
+		'  make install-smoke Exercise the installer against this checkout' \
+		'  make release-check Run pre-release validation'
 
 doctor:
 	./scripts/doctor.sh
@@ -59,3 +60,7 @@ install-smoke:
 	CLAUDE_WORKBENCH_SKIP_APP=1 \
 	./scripts/install.sh >/dev/null; \
 	test -f "$$tmpdir/claude-code-workbench/scripts/launch_claude_tmux.sh"
+
+release-check:
+	make test
+	make install-smoke
