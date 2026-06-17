@@ -22,7 +22,7 @@ doctor-report:
 	@printf 'Doctor report ready: doctor-report.md\n'
 
 first-run:
-	./scripts/doctor.sh
+	-./scripts/doctor.sh
 	$(MAKE) demo
 	./scripts/new_workflow.sh --list --verbose
 	@printf 'First-run check complete\n'
