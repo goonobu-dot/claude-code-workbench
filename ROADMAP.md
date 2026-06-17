@@ -11,18 +11,17 @@ Claude Code Workbench is focused on practical, local-first AI-agent workflows fo
 
 ## Near-Term Improvements
 
-- More end-to-end examples for pull request review and release preparation.
-- Better starter prompts for each workflow role.
-- Optional pane seeding so each pane can start with a role-specific prompt.
-- More robust install diagnostics for users new to tmux.
-- Screenshots or short demo assets for the README.
+- Generated workflow import/export for sharing review artifacts without local paths.
+- A public demo walkthrough that starts from a GitHub issue or pull request and ends with a handoff summary.
+- More role prompt templates for maintainer workflows beyond triage, review, release prep, and feature discovery.
+- Stronger markdown safety checks for generated workflow outputs.
+- Clearer examples of when to use 4, 6, or 9 panes.
 
 ## Larger Ideas
 
 - Shared workflow format across Claude Code Workbench and Local Agent Workbench.
-- Import/export of workflow folders for maintainers who want to share review artifacts.
 - Optional GitHub issue/PR helpers that create workflow folders from public issue URLs.
-- Additional safety checks for generated markdown before publication.
+- Adapter boundaries for additional local agent CLIs.
 
 ## Non-Goals
 

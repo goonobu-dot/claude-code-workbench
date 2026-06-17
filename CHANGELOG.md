@@ -11,6 +11,7 @@
 - Clarified Quick Start so installer and manual clone paths are separate.
 - Added a troubleshooting guide for common first-run setup problems.
 - Added a `Makefile` with standard doctor, test, safety, smoke, and installer-smoke targets.
+- Updated contributor guidance and roadmap items to match the current validation flow.
 
 ## v0.5.0
 

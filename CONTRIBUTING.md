@@ -13,8 +13,9 @@ Useful areas:
 Before opening a pull request:
 
 ```bash
-./Tests/test_claude_workbench_config.sh
-./scripts/audit_public_safety.sh
+make test
 ```
 
-Do not include private logs, local vaults, app bundles, or generated research output.
+Use `make doctor` for local setup checks and `make install-smoke` when changing installer behavior.
+
+Do not include private logs, local vaults, app bundles, or generated research output. If a contribution adds a generated workflow example, keep it fictional and run `make safety` before opening the pull request.
