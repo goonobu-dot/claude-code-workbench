@@ -1,0 +1,52 @@
+# Continuous Improvement Run Log
+
+- Loop 01: PASS - Clarified that first-time readers should start with install-free evaluation before installing.
+- Loop 02: PASS - Added a stronger rule that every public workflow artifact should be inspectable before sharing.
+- Loop 03: PASS - Documented that setup diagnostics are useful even when the CLI dependency is missing.
+- Loop 04: PASS - Reinforced that uninstall should be reversible unless explicit removal flags are set.
+- Loop 05: PASS - Highlighted that issue triage is the safest default workflow for unfamiliar tasks.
+- Loop 06: PASS - Recorded that security triage should start from impact and reproduction boundaries.
+- Loop 07: PASS - Recorded that documentation improvement starts from the confused reader, not the writer.
+- Loop 08: PASS - Recorded that dependency update review should separate compatibility, tests, and rollback risk.
+- Loop 09: PASS - Added guidance that URL-created workflows should keep canonical source links.
+- Loop 10: PASS - Added guidance that GitHub metadata is helpful but should not be required for offline use.
+- Loop 11: PASS - Added a reminder that workflow exports should be reviewed before publication.
+- Loop 12: PASS - Added a reminder that import paths must stay inside the destination directory.
+- Loop 13: PASS - Added a reminder that doctor reports should be reviewed before issue submission.
+- Loop 14: PASS - Added a note that pane roles should create independent angles rather than duplicate work.
+- Loop 15: PASS - Added a note that handoff summaries should name unresolved questions explicitly.
+- Loop 16: PASS - Added a note that demo workflows should use fictional data only.
+- Loop 17: PASS - Added a note that README examples should link to final artifacts, not only folders.
+- Loop 18: PASS - Added a note that quick-start commands should be copy-pasteable.
+- Loop 19: PASS - Added a note that advanced commands should live outside the first screen.
+- Loop 20: PASS - Added a note that CI should run the same checks maintainers run locally.
+- Loop 21: PASS - Added a note that release notes should explain user-visible changes plainly.
+- Loop 22: PASS - Added a note that support docs should route users to diagnostics first.
+- Loop 23: PASS - Added a note that FAQ entries should answer security concerns directly.
+- Loop 24: PASS - Added a note that workflow templates should include the decision they produce.
+- Loop 25: PASS - Added a note that example outputs should show a recommendation, not just raw notes.
+- Loop 26: PASS - Added a note that release preparation should include follow-up risks.
+- Loop 27: PASS - Added a note that PR review should separate behavior, tests, safety, and docs.
+- Loop 28: PASS - Added a note that issue triage should separate reproduction, code path, fix, and response.
+- Loop 29: PASS - Added a note that feature discovery should end with scope boundaries.
+- Loop 30: PASS - Added a note that local-only tools should state what never leaves the machine.
+- Loop 31: PASS - Added a note that manual clone is the trust-building path for cautious users.
+- Loop 32: PASS - Added a note that one-command install is the speed path for confident users.
+- Loop 33: PASS - Added a note that demo transcript helps users understand output before running code.
+- Loop 34: PASS - Added a note that workflow recommendation helps users choose the first action.
+- Loop 35: PASS - Added a note that scorecards should be tested for count and endpoints.
+- Loop 36: PASS - Added a note that generated docs should be reproducible by script.
+- Loop 37: PASS - Added a note that scripts should fail closed for unsafe sharing operations.
+- Loop 38: PASS - Added a note that noncritical setup checks should not block demo exploration.
+- Loop 39: PASS - Added a note that public examples should avoid real client or project data.
+- Loop 40: PASS - Added a note that command references should include recovery commands.
+- Loop 41: PASS - Added a note that adoption plans should avoid fake metrics.
+- Loop 42: PASS - Added a note that showcase docs should explain the boundary of the tool.
+- Loop 43: PASS - Added a note that architecture docs should identify shared state.
+- Loop 44: PASS - Added a note that troubleshooting docs should include environment variables.
+- Loop 45: PASS - Added a note that workflow sharing docs should explain archive contents.
+- Loop 46: PASS - Added a note that validation docs should include what a passing result means.
+- Loop 47: PASS - Added a note that generated reports should preserve raw output and suggested fixes.
+- Loop 48: PASS - Added a note that install docs should include uninstall instructions.
+- Loop 49: PASS - Added a note that tests should check reader-facing docs as first-class behavior.
+- Loop 50: PASS - Added a final note that repeated improvement loops should leave a verifiable audit trail.

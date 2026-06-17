@@ -77,7 +77,15 @@ check_contains scripts/recommend_workflow.sh 'examples/security-triage-demo'
 check_contains scripts/recommend_workflow.sh 'CLAUDE_WORKBENCH_IDEA_DIR'
 check_contains scripts/check_adoption_scorecard.sh 'Expected 50 adoption loops'
 check_contains scripts/check_adoption_scorecard.sh 'Loop 50'
+check_contains scripts/run_50_improvement_loops.sh 'Completed 50 add-and-test improvement loops'
+check_contains scripts/check_continuous_improvement_loops.sh 'Expected $EXPECTED continuous improvement loops'
+check_contains docs/continuous-improvement-loops.md 'Continuous Improvement Loops'
+check_contains docs/continuous-improvement-loops.md 'Loop 01'
+check_contains docs/continuous-improvement-loops.md 'Loop 50'
+check_contains docs/continuous-improvement-run-log.md 'Loop 50: PASS'
 check_contains Makefile 'test:'
+check_contains Makefile 'continuous-improvement-check:'
+check_contains Makefile './scripts/check_continuous_improvement_loops.sh docs/continuous-improvement-loops.md 50'
 check_contains Makefile 'recommend:'
 check_contains Makefile './scripts/recommend_workflow.sh'
 check_contains Makefile 'demo-transcript:'
@@ -148,6 +156,7 @@ check_contains README.md 'make first-run'
 check_contains README.md 'docs/install.md'
 check_contains README.md 'docs/demo-transcript.md'
 check_contains README.md 'docs/adoption-scorecard.md'
+check_contains README.md 'docs/continuous-improvement-loops.md'
 check_contains README.md './scripts/recommend_workflow.sh'
 check_contains README.md 'docs/showcase.md'
 check_contains README.md 'Who This Is For'
@@ -413,6 +422,7 @@ check_contains "$metadata_workflow_dir/question.md" 'Body Excerpt: Opening the w
 make first-run >/dev/null
 make demo-transcript >/dev/null
 ./scripts/check_adoption_scorecard.sh >/dev/null
+./scripts/check_continuous_improvement_loops.sh docs/continuous-improvement-loops.md 50 >/dev/null
 check_contains docs/demo-transcript.md 'Claude Code Workbench Demo Transcript'
 ./scripts/recommend_workflow.sh issue | grep -Fq 'issue-triage' || { echo "issue recommendation missing issue-triage"; fail=1; }
 ./scripts/recommend_workflow.sh security | grep -Fq 'examples/security-triage-demo' || { echo "security recommendation missing demo"; fail=1; }
