@@ -54,6 +54,7 @@
 - Added `docs/install.md`, `make first-run`, and `scripts/uninstall.sh` to reduce first-time setup friction.
 - Added `docs/demo-transcript.md` and `make demo-transcript` for install-free evaluation from GitHub.
 - Added `scripts/recommend_workflow.sh` and `make recommend` to help first-time users choose a workflow.
+- Added `docs/adoption-scorecard.md` and `scripts/check_adoption_scorecard.sh` to record and verify 50 adoption improvement loops.
 
 ## v0.5.0
 

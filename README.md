@@ -243,6 +243,7 @@ See also:
 - [docs/evaluation-guide.md](docs/evaluation-guide.md)
 - [docs/install.md](docs/install.md)
 - [docs/demo-transcript.md](docs/demo-transcript.md)
+- [docs/adoption-scorecard.md](docs/adoption-scorecard.md)
 - [docs/commands.md](docs/commands.md)
 - [docs/architecture.md](docs/architecture.md)
 - [docs/quality-gates.md](docs/quality-gates.md)
