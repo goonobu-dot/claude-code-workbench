@@ -132,10 +132,17 @@ See also:
 - [docs/oss-maintainer-use-cases.md](docs/oss-maintainer-use-cases.md)
 - [docs/showcase.md](docs/showcase.md)
 - [docs/workflow-templates.md](docs/workflow-templates.md)
+- [docs/openai-codex-for-oss.md](docs/openai-codex-for-oss.md)
+- [docs/adoption-plan.md](docs/adoption-plan.md)
 
 Example:
 
 - [examples/issue-triage-demo](examples/issue-triage-demo)
+
+Project operations:
+
+- [ROADMAP.md](ROADMAP.md)
+- [CHANGELOG.md](CHANGELOG.md)
 
 ## Safety Notes
 
