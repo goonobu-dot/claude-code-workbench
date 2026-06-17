@@ -33,6 +33,7 @@
 - Added `make doctor-report` for issue-ready diagnostics.
 - Added `docs/commands.md`.
 - Updated installer next-step guidance for `make demo`, workflow listing, and doctor reports.
+- Added `docs/architecture.md`.
 
 ## v0.5.0
 

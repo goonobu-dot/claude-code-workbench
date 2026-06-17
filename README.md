@@ -175,6 +175,7 @@ See also:
 - [docs/showcase.md](docs/showcase.md)
 - [docs/one-minute-demo.md](docs/one-minute-demo.md)
 - [docs/commands.md](docs/commands.md)
+- [docs/architecture.md](docs/architecture.md)
 - [docs/workflow-templates.md](docs/workflow-templates.md)
 - [docs/workflow-sharing.md](docs/workflow-sharing.md)
 - [docs/troubleshooting.md](docs/troubleshooting.md)
