@@ -5,6 +5,7 @@
 - Added `examples/pr-review-demo`, a fictional end-to-end pull request review workflow.
 - Added role-specific prompt generation for workflow panes.
 - Improved first-run diagnostics with actionable setup recommendations.
+- Added a README terminal preview SVG for first-time visitors.
 
 ## v0.5.0
 

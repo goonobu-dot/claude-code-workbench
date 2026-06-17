@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="690" viewBox="0 0 1180 690" role="img" aria-labelledby="title desc">
+  <title id="title">Claude Code Workbench tmux preview</title>
+  <desc id="desc">A mock terminal preview showing nine Claude Code panes working on one shared open source maintenance workflow.</desc>
+  <rect width="1180" height="690" rx="18" fill="#101418"/>
+  <rect x="28" y="28" width="1124" height="48" rx="10" fill="#1b2229"/>
+  <circle cx="56" cy="52" r="7" fill="#ff5f57"/>
+  <circle cx="80" cy="52" r="7" fill="#ffbd2e"/>
+  <circle cx="104" cy="52" r="7" fill="#28c840"/>
+  <text x="134" y="58" fill="#d7dde5" font-family="Menlo, Consolas, monospace" font-size="18">claude-code-9 - Claude Code workbench - shared workspace: ./demo/oss-maintenance</text>
+  <g font-family="Menlo, Consolas, monospace" font-size="14">
+    <rect x="28" y="100" width="350" height="150" rx="10" fill="#151b22" stroke="#31404d"/>
+    <text x="48" y="128" fill="#d2a8ff">pane 1 / reproduce</text>
+    <text x="48" y="158" fill="#d7dde5">$ claude "reproduce issue #42"</text>
+    <text x="48" y="186" fill="#9fb0c0">found failing path in parser options</text>
+    <text x="48" y="214" fill="#7ee787">writes pane-1-reproduction.md</text>
+    <rect x="414" y="100" width="350" height="150" rx="10" fill="#151b22" stroke="#31404d"/>
+    <text x="434" y="128" fill="#d2a8ff">pane 2 / code paths</text>
+    <text x="434" y="158" fill="#d7dde5">$ claude "trace related files"</text>
+    <text x="434" y="186" fill="#9fb0c0">maps parser, tests, release notes</text>
+    <text x="434" y="214" fill="#7ee787">writes pane-2-code-paths.md</text>
+    <rect x="800" y="100" width="352" height="150" rx="10" fill="#151b22" stroke="#31404d"/>
+    <text x="820" y="128" fill="#d2a8ff">pane 3 / fix plan</text>
+    <text x="820" y="158" fill="#d7dde5">$ claude "propose minimal patch"</text>
+    <text x="820" y="186" fill="#9fb0c0">keeps blast radius small</text>
+    <text x="820" y="214" fill="#7ee787">writes pane-3-fix-plan.md</text>
+    <rect x="28" y="276" width="350" height="150" rx="10" fill="#151b22" stroke="#31404d"/>
+    <text x="48" y="304" fill="#d2a8ff">pane 4 / tests</text>
+    <text x="48" y="334" fill="#d7dde5">$ claude "design regression test"</text>
+    <text x="48" y="362" fill="#9fb0c0">checks old behavior and edge cases</text>
+    <text x="48" y="390" fill="#7ee787">writes pane-4-tests.md</text>
+    <rect x="414" y="276" width="350" height="150" rx="10" fill="#151b22" stroke="#31404d"/>
+    <text x="434" y="304" fill="#d2a8ff">pane 5 / risk review</text>
+    <text x="434" y="334" fill="#d7dde5">$ claude "audit safety impact"</text>
+    <text x="434" y="362" fill="#9fb0c0">flags compatibility and docs updates</text>
+    <text x="434" y="390" fill="#7ee787">writes pane-5-safety-review.md</text>
+    <rect x="800" y="276" width="352" height="150" rx="10" fill="#151b22" stroke="#31404d"/>
+    <text x="820" y="304" fill="#d2a8ff">pane 6 / maintainer reply</text>
+    <text x="820" y="334" fill="#d7dde5">$ claude "draft issue response"</text>
+    <text x="820" y="362" fill="#9fb0c0">summarizes decision and next action</text>
+    <text x="820" y="390" fill="#7ee787">writes pane-6-response.md</text>
+    <rect x="28" y="452" width="350" height="150" rx="10" fill="#151b22" stroke="#31404d"/>
+    <text x="48" y="480" fill="#d2a8ff">pane 7 / docs</text>
+    <text x="48" y="510" fill="#d7dde5">$ claude "update quickstart"</text>
+    <text x="48" y="538" fill="#9fb0c0">keeps first-run path clear</text>
+    <text x="48" y="566" fill="#7ee787">writes pane-7-docs.md</text>
+    <rect x="414" y="452" width="350" height="150" rx="10" fill="#151b22" stroke="#31404d"/>
+    <text x="434" y="480" fill="#d2a8ff">pane 8 / release prep</text>
+    <text x="434" y="510" fill="#d7dde5">$ claude "prepare changelog"</text>
+    <text x="434" y="538" fill="#9fb0c0">collects test and release evidence</text>
+    <text x="434" y="566" fill="#7ee787">writes pane-8-release.md</text>
+    <rect x="800" y="452" width="352" height="150" rx="10" fill="#151b22" stroke="#31404d"/>
+    <text x="820" y="480" fill="#d2a8ff">pane 9 / handoff</text>
+    <text x="820" y="510" fill="#d7dde5">$ ./scripts/close_workflow.sh demo</text>
+    <text x="820" y="538" fill="#9fb0c0">merges notes into one summary</text>
+    <text x="820" y="566" fill="#7ee787">writes handoff-summary.md</text>
+  </g>
+  <rect x="28" y="624" width="1124" height="38" rx="8" fill="#1b2229"/>
+  <text x="48" y="649" fill="#c9d1d9" font-family="Menlo, Consolas, monospace" font-size="15">shared outputs: question.md / pane-roles.md / pane-*.md / handoff-summary.md</text>
+</svg>

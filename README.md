@@ -10,6 +10,8 @@ This is a focused public version of a real local workflow: launch several Claude
 
 This project is not affiliated with Anthropic.
 
+![Claude Code Workbench terminal preview](docs/assets/workbench-preview.svg)
+
 ## Why This Exists
 
 One AI-agent chat is useful. Several panes are better when you want independent angles on the same problem.
