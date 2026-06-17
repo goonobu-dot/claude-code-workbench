@@ -1,9 +1,10 @@
-.PHONY: help doctor demo test syntax safety smoke install-smoke
+.PHONY: help doctor doctor-report demo test syntax safety smoke install-smoke
 
 help:
 	@printf '%s\n' \
 		'Targets:' \
 		'  make doctor        Check local setup without launching panes' \
+		'  make doctor-report Write doctor-report.md for bug reports' \
 		'  make demo          Generate, validate, and close a temporary demo workflow' \
 		'  make test          Run config, syntax, safety, and workflow smoke tests' \
 		'  make syntax        Check shell script syntax' \
@@ -13,6 +14,10 @@ help:
 
 doctor:
 	./scripts/doctor.sh
+
+doctor-report:
+	-./scripts/doctor.sh --report doctor-report.md
+	@printf 'Doctor report ready: doctor-report.md\n'
 
 demo:
 	@set -e; \

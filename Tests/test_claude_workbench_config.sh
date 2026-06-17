@@ -59,6 +59,8 @@ check_contains scripts/install.sh 'CLAUDE_WORKBENCH_INSTALL_DIR'
 check_contains Makefile 'test:'
 check_contains Makefile 'demo:'
 check_contains Makefile 'Demo workflow ready'
+check_contains Makefile 'doctor-report:'
+check_contains Makefile 'doctor-report.md'
 check_contains Makefile './Tests/test_claude_workbench_config.sh'
 check_contains Makefile './scripts/audit_public_safety.sh'
 check_contains scripts/new_workflow.sh 'issue-triage'
@@ -151,6 +153,7 @@ check_contains docs/faq.md 'What Does GitHub Make Public?'
 check_contains docs/troubleshooting.md 'CLAUDE_WORKBENCH_COMMAND'
 check_contains docs/troubleshooting.md 'CLAUDE_WORKBENCH_AUTO_SUBMIT=0'
 check_contains docs/troubleshooting.md './scripts/doctor.sh --report doctor-report.md'
+check_contains docs/troubleshooting.md 'make doctor-report'
 check_contains docs/workflow-sharing.md 'Export A Workflow'
 check_contains docs/workflow-sharing.md './scripts/validate_workflow.sh'
 check_contains docs/workflow-sharing.md './scripts/export_workflow.sh'
@@ -204,6 +207,9 @@ check_contains "$doctor_report" '```text'
 ./scripts/new_workflow.sh --list | grep -Fq 'issue-triage' || { echo "workflow list missing issue-triage"; fail=1; }
 ./scripts/new_workflow.sh --list | grep -Fq 'feature-discovery' || { echo "workflow list missing feature-discovery"; fail=1; }
 make demo >/dev/null
+make doctor-report >/dev/null || true
+test -f doctor-report.md || { echo "missing doctor-report.md"; fail=1; }
+rm -f doctor-report.md
 
 export_dir="$tmp_home/Idea/export-workflow"
 mkdir -p "$export_dir/prompts"

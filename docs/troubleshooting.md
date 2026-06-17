@@ -14,6 +14,12 @@ To create a Markdown report you can attach to an issue, run:
 ./scripts/doctor.sh --report doctor-report.md
 ```
 
+Or use the Makefile shortcut:
+
+```bash
+make doctor-report
+```
+
 The doctor checks:
 
 - `tmux`

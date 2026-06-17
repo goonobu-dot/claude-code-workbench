@@ -30,6 +30,7 @@
 - Added `SECURITY.md` with reporting and workflow-sharing safety guidance.
 - Added `workflow-manifest.json` to exported workflow archives.
 - Added `docs/faq.md` for local safety, GitHub visibility, and API-key boundaries.
+- Added `make doctor-report` for issue-ready diagnostics.
 
 ## v0.5.0
 
