@@ -71,7 +71,13 @@ check_contains scripts/uninstall.sh 'Set CLAUDE_WORKBENCH_CONFIRM_UNINSTALL=1'
 check_contains scripts/write_demo_transcript.sh 'Claude Code Workbench Demo Transcript'
 check_contains scripts/write_demo_transcript.sh 'make first-run'
 check_contains scripts/write_demo_transcript.sh 'Workflow Handoff Summary'
+check_contains scripts/recommend_workflow.sh 'Recommended Workflow'
+check_contains scripts/recommend_workflow.sh 'issue-triage'
+check_contains scripts/recommend_workflow.sh 'examples/security-triage-demo'
+check_contains scripts/recommend_workflow.sh 'CLAUDE_WORKBENCH_IDEA_DIR'
 check_contains Makefile 'test:'
+check_contains Makefile 'recommend:'
+check_contains Makefile './scripts/recommend_workflow.sh'
 check_contains Makefile 'demo-transcript:'
 check_contains Makefile 'docs/demo-transcript.md'
 check_contains Makefile 'first-run:'
@@ -139,6 +145,7 @@ check_contains README.md 'Demo Preview'
 check_contains README.md 'make first-run'
 check_contains README.md 'docs/install.md'
 check_contains README.md 'docs/demo-transcript.md'
+check_contains README.md './scripts/recommend_workflow.sh'
 check_contains README.md 'docs/showcase.md'
 check_contains README.md 'Who This Is For'
 check_contains README.md 'What You Get In 5 Minutes'
@@ -400,6 +407,9 @@ check_contains "$metadata_workflow_dir/question.md" 'Body Excerpt: Opening the w
 make first-run >/dev/null
 make demo-transcript >/dev/null
 check_contains docs/demo-transcript.md 'Claude Code Workbench Demo Transcript'
+./scripts/recommend_workflow.sh issue | grep -Fq 'issue-triage' || { echo "issue recommendation missing issue-triage"; fail=1; }
+./scripts/recommend_workflow.sh security | grep -Fq 'examples/security-triage-demo' || { echo "security recommendation missing demo"; fail=1; }
+make recommend >/dev/null
 uninstall_root="$tmp_home/uninstall-root"
 mkdir -p "$uninstall_root/Claude Code Workbench.app" "$uninstall_root/Idea"
 CLAUDE_WORKBENCH_INSTALL_DIR="$uninstall_root/claude-code-workbench" \

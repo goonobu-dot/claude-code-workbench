@@ -40,6 +40,13 @@ workflow templates.
 Read [docs/demo-transcript.md](docs/demo-transcript.md) to see the expected
 output shape before running anything locally.
 
+If you are unsure where to start, run:
+
+```bash
+./scripts/recommend_workflow.sh issue
+./scripts/recommend_workflow.sh security
+```
+
 ## Who This Is For
 
 - OSS maintainers who need faster issue triage, pull request review, release preparation, or security screening.

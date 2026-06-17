@@ -53,6 +53,7 @@
 - Added security triage, documentation improvement, and dependency update example workflows.
 - Added `docs/install.md`, `make first-run`, and `scripts/uninstall.sh` to reduce first-time setup friction.
 - Added `docs/demo-transcript.md` and `make demo-transcript` for install-free evaluation from GitHub.
+- Added `scripts/recommend_workflow.sh` and `make recommend` to help first-time users choose a workflow.
 
 ## v0.5.0
 
