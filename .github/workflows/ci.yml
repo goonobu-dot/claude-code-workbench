@@ -13,7 +13,7 @@ jobs:
   validate:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Run local validation suite
         run: make test
       - name: Installer smoke test
