@@ -182,6 +182,7 @@ See also:
 - [docs/workflow-sharing.md](docs/workflow-sharing.md)
 - [docs/troubleshooting.md](docs/troubleshooting.md)
 - [docs/faq.md](docs/faq.md)
+- [SUPPORT.md](SUPPORT.md)
 - [docs/publication-checklist.md](docs/publication-checklist.md)
 - [docs/openai-codex-for-oss.md](docs/openai-codex-for-oss.md)
 - [docs/adoption-plan.md](docs/adoption-plan.md)

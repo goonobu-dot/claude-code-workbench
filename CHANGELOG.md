@@ -45,6 +45,7 @@
 - Added `./scripts/new_workflow.sh --list --verbose`.
 - Added canonical GitHub URLs to workflows created from issue or pull request URLs.
 - Added a `Suggested Fixes` section to generated doctor reports.
+- Added `SUPPORT.md` with first-check, troubleshooting, and issue-reporting guidance.
 
 ## v0.5.0
 
