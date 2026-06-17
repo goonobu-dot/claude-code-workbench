@@ -9,6 +9,7 @@
 - Redacted absolute local paths from generated workflow handoff summaries.
 - Added `question.md` templates for every generated workflow and expanded CI smoke coverage.
 - Clarified Quick Start so installer and manual clone paths are separate.
+- Added a troubleshooting guide for common first-run setup problems.
 
 ## v0.5.0
 
