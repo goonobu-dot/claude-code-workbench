@@ -33,8 +33,10 @@ sign_app() {
 rm -rf "$APP_BUNDLE"
 rm -rf "$SEND_RETURN_APP_BUNDLE"
 mkdir -p "$(dirname "$APP_BUNDLE")" "$(dirname "$SEND_RETURN_APP_BUNDLE")"
-python3 "$ROOT_DIR/scripts/create_app_icon.py" >/dev/null
-iconutil -c icns "$ROOT_DIR/Assets/$ICON_NAME.iconset" -o "$ICON_FILE"
+if [[ "${CLAUDE_WORKBENCH_REGENERATE_ICON:-0}" == "1" || ! -f "$ICON_FILE" ]]; then
+    python3 "$ROOT_DIR/scripts/create_app_icon.py" >/dev/null
+    iconutil -c icns "$ROOT_DIR/Assets/$ICON_NAME.iconset" -o "$ICON_FILE"
+fi
 osacompile -o "$APP_BUNDLE" "$SCRIPT_PATH"
 osacompile -o "$SEND_RETURN_APP_BUNDLE" "$SEND_RETURN_SCRIPT_PATH"
 cp "$ICON_FILE" "$APP_BUNDLE/Contents/Resources/$ICON_NAME.icns"
