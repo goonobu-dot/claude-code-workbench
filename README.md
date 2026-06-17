@@ -92,6 +92,12 @@ Export a workflow folder for sharing:
 ./scripts/export_workflow.sh "$HOME/ClaudeCodeWorkbench/Idea"
 ```
 
+Import a shared workflow archive:
+
+```bash
+./scripts/import_workflow.sh ./Idea-workflow-export.tar.gz
+```
+
 All panes use one shared idea folder by default:
 
 ```bash

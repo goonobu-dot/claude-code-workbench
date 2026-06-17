@@ -75,6 +75,8 @@ check_contains scripts/close_workflow.sh 'display_workflow_dir'
 check_contains scripts/close_workflow.sh '<outside-current-directory>'
 check_contains scripts/export_workflow.sh 'Workflow export ready'
 check_contains scripts/export_workflow.sh 'Potential private data found'
+check_contains scripts/import_workflow.sh 'Workflow import ready'
+check_contains scripts/import_workflow.sh 'Unsafe archive path'
 check_contains README.md 'docs/oss-maintainer-use-cases.md'
 check_contains README.md 'docs/showcase.md'
 check_contains README.md 'docs/workflow-templates.md'
@@ -83,6 +85,7 @@ check_contains README.md 'docs/openai-codex-for-oss.md'
 check_contains README.md 'docs/adoption-plan.md'
 check_contains README.md 'docs/assets/workbench-preview.svg'
 check_contains README.md './scripts/export_workflow.sh'
+check_contains README.md './scripts/import_workflow.sh'
 check_contains README.md 'Manual clone instead of the installer'
 check_contains README.md 'https://github.com/goonobu-dot/claude-code-workbench.git'
 check_not_contains README.md '<your-fork-url>'
@@ -135,10 +138,30 @@ export_file="$tmp_home/export-workflow.tar.gz"
 ./scripts/export_workflow.sh "$export_dir" "$export_file" >/dev/null
 test -f "$export_file" || { echo "missing export file: $export_file"; fail=1; }
 tar -tzf "$export_file" | grep -Fq 'export-workflow/question.md' || { echo "missing question.md in export"; fail=1; }
+import_dir="$tmp_home/imported"
+./scripts/import_workflow.sh "$export_file" "$import_dir" >/dev/null
+test -f "$import_dir/export-workflow/question.md" || { echo "missing imported question.md"; fail=1; }
 private_export_path='/'"Users"'/admin/private'
 printf '# Leak\n\n%s\n' "$private_export_path" >"$export_dir/leak.md"
 if ./scripts/export_workflow.sh "$export_dir" "$tmp_home/leak.tar.gz" >/dev/null 2>&1; then
   echo "export should fail when markdown contains a local absolute path"
+  fail=1
+fi
+
+malicious_archive="$tmp_home/malicious.tar.gz"
+python3 - "$malicious_archive" <<'PY'
+import io
+import tarfile
+import sys
+
+with tarfile.open(sys.argv[1], "w:gz") as archive:
+    data = b"# Bad\n"
+    info = tarfile.TarInfo("../evil.md")
+    info.size = len(data)
+    archive.addfile(info, io.BytesIO(data))
+PY
+if ./scripts/import_workflow.sh "$malicious_archive" "$tmp_home/malicious-out" >/dev/null 2>&1; then
+  echo "import should fail when archive contains unsafe paths"
   fail=1
 fi
 

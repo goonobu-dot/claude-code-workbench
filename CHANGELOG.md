@@ -13,6 +13,7 @@
 - Added a `Makefile` with standard doctor, test, safety, smoke, and installer-smoke targets.
 - Updated contributor guidance and roadmap items to match the current validation flow.
 - Added `scripts/export_workflow.sh` for sharing markdown workflow folders with private-data checks.
+- Added `scripts/import_workflow.sh` for safely unpacking shared workflow archives.
 
 ## v0.5.0
 
