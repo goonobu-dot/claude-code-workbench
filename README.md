@@ -50,6 +50,7 @@ Then launch:
 
 ```bash
 cd "$HOME/ClaudeCodeWorkbench/claude-code-workbench"
+make demo
 ./scripts/launch_claude_tmux.sh
 ```
 
