@@ -47,6 +47,7 @@
 - Added a `Suggested Fixes` section to generated doctor reports.
 - Added `SUPPORT.md` with first-check, troubleshooting, and issue-reporting guidance.
 - Added `docs/quality-gates.md` to explain local, safety, CI, and user-reproduction checks.
+- Added `docs/evaluation-guide.md` for a five-minute first-user evaluation path.
 
 ## v0.5.0
 
