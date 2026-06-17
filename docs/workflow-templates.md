@@ -13,6 +13,13 @@ The goal is to make a 4/6/9-pane session concrete before launching agents. Each 
 ./scripts/new_workflow.sh feature-discovery
 ```
 
+You can also start from a public GitHub issue or pull request URL:
+
+```bash
+./scripts/create_workflow_from_url.sh https://github.com/owner/repo/issues/123
+./scripts/create_workflow_from_url.sh https://github.com/owner/repo/pull/123
+```
+
 You can also choose a destination:
 
 ```bash

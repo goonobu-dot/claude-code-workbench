@@ -16,6 +16,7 @@
 - Added `scripts/import_workflow.sh` for safely unpacking shared workflow archives.
 - Added `docs/workflow-sharing.md` with export/import usage and safety boundaries.
 - Connected workflow sharing to the showcase and workflow safety checklist.
+- Added `scripts/create_workflow_from_url.sh` for starting workflows from public GitHub issue and pull request URLs.
 
 ## v0.5.0
 

@@ -64,6 +64,10 @@ check_contains scripts/new_workflow.sh 'prompts_dir / f"pane-{pane_number}.md"'
 check_contains scripts/new_workflow.sh 'Paste the pull request link'
 check_contains scripts/new_workflow.sh 'Paste the target version'
 check_contains scripts/new_workflow.sh 'Paste the user problem'
+check_contains scripts/create_workflow_from_url.sh 'Workflow from URL ready'
+check_contains scripts/create_workflow_from_url.sh 'github.com'
+check_contains scripts/create_workflow_from_url.sh 'issue-triage'
+check_contains scripts/create_workflow_from_url.sh 'pr-review'
 check_contains Makefile 'for workflow in issue-triage pr-review release-prep feature-discovery'
 check_contains .github/workflows/ci.yml 'make test'
 check_contains .github/workflows/ci.yml 'make install-smoke'
@@ -113,6 +117,7 @@ check_contains docs/workflow-sharing.md 'Export A Workflow'
 check_contains docs/workflow-sharing.md './scripts/export_workflow.sh'
 check_contains docs/workflow-sharing.md './scripts/import_workflow.sh'
 check_contains docs/workflow-sharing.md 'Path traversal'
+check_contains docs/workflow-templates.md './scripts/create_workflow_from_url.sh'
 check_contains examples/README.md 'issue-triage-demo'
 check_contains examples/README.md 'docs/workflow-sharing.md'
 check_contains examples/README.md 'pr-review-demo'
@@ -176,5 +181,15 @@ if ./scripts/import_workflow.sh "$malicious_archive" "$tmp_home/malicious-out" >
   echo "import should fail when archive contains unsafe paths"
   fail=1
 fi
+
+url_workflow_dir="$tmp_home/from-url"
+./scripts/create_workflow_from_url.sh "https://github.com/example/project/issues/42" "$url_workflow_dir" >/dev/null
+test -f "$url_workflow_dir/final-triage.md" || { echo "missing issue triage output from URL workflow"; fail=1; }
+check_contains "$url_workflow_dir/question.md" 'https://github.com/example/project/issues/42'
+check_contains "$url_workflow_dir/question.md" 'Source URL'
+pr_workflow_dir="$tmp_home/from-pr-url"
+./scripts/create_workflow_from_url.sh "https://github.com/example/project/pull/7" "$pr_workflow_dir" >/dev/null
+test -f "$pr_workflow_dir/final-review.md" || { echo "missing PR review output from URL workflow"; fail=1; }
+check_contains "$pr_workflow_dir/question.md" 'https://github.com/example/project/pull/7'
 
 exit "$fail"

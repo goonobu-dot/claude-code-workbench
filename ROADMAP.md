@@ -20,7 +20,6 @@ Claude Code Workbench is focused on practical, local-first AI-agent workflows fo
 ## Larger Ideas
 
 - Shared workflow format across Claude Code Workbench and Local Agent Workbench.
-- Optional GitHub issue/PR helpers that create workflow folders from public issue URLs.
 - Adapter boundaries for additional local agent CLIs.
 
 ## Non-Goals
