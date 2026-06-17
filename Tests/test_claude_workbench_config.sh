@@ -73,6 +73,8 @@ check_contains scripts/close_workflow.sh 'Workflow Handoff Summary'
 check_contains scripts/close_workflow.sh 'Empty Sections To Fill'
 check_contains scripts/close_workflow.sh 'display_workflow_dir'
 check_contains scripts/close_workflow.sh '<outside-current-directory>'
+check_contains scripts/export_workflow.sh 'Workflow export ready'
+check_contains scripts/export_workflow.sh 'Potential private data found'
 check_contains README.md 'docs/oss-maintainer-use-cases.md'
 check_contains README.md 'docs/showcase.md'
 check_contains README.md 'docs/workflow-templates.md'
@@ -80,6 +82,7 @@ check_contains README.md 'docs/troubleshooting.md'
 check_contains README.md 'docs/openai-codex-for-oss.md'
 check_contains README.md 'docs/adoption-plan.md'
 check_contains README.md 'docs/assets/workbench-preview.svg'
+check_contains README.md './scripts/export_workflow.sh'
 check_contains README.md 'Manual clone instead of the installer'
 check_contains README.md 'https://github.com/goonobu-dot/claude-code-workbench.git'
 check_not_contains README.md '<your-fork-url>'
@@ -122,5 +125,21 @@ printf '# Note\n\n## Empty\n' >"$workflow_dir/note.md"
 HOME="$tmp_home" ./scripts/close_workflow.sh "$workflow_dir" "$workflow_dir/handoff-summary.md" >/dev/null
 check_contains "$workflow_dir/handoff-summary.md" 'Workflow directory: `~/Idea/test-workflow`'
 check_not_contains "$workflow_dir/handoff-summary.md" "$tmp_home"
+
+export_dir="$tmp_home/Idea/export-workflow"
+mkdir -p "$export_dir/prompts"
+printf '# Question\n\nReview this fictional issue.\n' >"$export_dir/question.md"
+printf '# Roles\n\nPane 1: Review.\n' >"$export_dir/pane-roles.md"
+printf '# Prompt\n' >"$export_dir/prompts/pane-1.md"
+export_file="$tmp_home/export-workflow.tar.gz"
+./scripts/export_workflow.sh "$export_dir" "$export_file" >/dev/null
+test -f "$export_file" || { echo "missing export file: $export_file"; fail=1; }
+tar -tzf "$export_file" | grep -Fq 'export-workflow/question.md' || { echo "missing question.md in export"; fail=1; }
+private_export_path='/'"Users"'/admin/private'
+printf '# Leak\n\n%s\n' "$private_export_path" >"$export_dir/leak.md"
+if ./scripts/export_workflow.sh "$export_dir" "$tmp_home/leak.tar.gz" >/dev/null 2>&1; then
+  echo "export should fail when markdown contains a local absolute path"
+  fail=1
+fi
 
 exit "$fail"

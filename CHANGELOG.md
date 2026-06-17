@@ -12,6 +12,7 @@
 - Added a troubleshooting guide for common first-run setup problems.
 - Added a `Makefile` with standard doctor, test, safety, smoke, and installer-smoke targets.
 - Updated contributor guidance and roadmap items to match the current validation flow.
+- Added `scripts/export_workflow.sh` for sharing markdown workflow folders with private-data checks.
 
 ## v0.5.0
 
