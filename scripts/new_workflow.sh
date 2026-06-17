@@ -48,6 +48,52 @@ write_if_missing() {
   echo "created: $path"
 }
 
+generate_role_prompts() {
+  local roles_file="$DEST_DIR/pane-roles.md"
+  local prompts_dir="$DEST_DIR/prompts"
+  mkdir -p "$prompts_dir"
+
+  python3 - "$roles_file" "$prompts_dir" "$WORKFLOW" <<'PY'
+from pathlib import Path
+import re
+import sys
+
+roles_file = Path(sys.argv[1])
+prompts_dir = Path(sys.argv[2])
+workflow = sys.argv[3]
+
+text = roles_file.read_text(encoding="utf-8")
+matches = re.findall(r"^Pane\s+(\d+):\s*(.+)$", text, flags=re.MULTILINE)
+
+for pane_number, role in matches:
+    prompt_path = prompts_dir / f"pane-{pane_number}.md"
+    if prompt_path.exists():
+        print(f"skip existing: {prompt_path}")
+        continue
+    prompt_path.write_text(
+        f"""# Pane {pane_number} Prompt
+
+You are Pane {pane_number} in a Claude Code Workbench session.
+
+Workflow: {workflow}
+
+Role: {role}
+
+Use the shared workflow folder as your source of truth. Start by reading:
+
+- `question.md`
+- `pane-roles.md`
+
+Then produce concrete notes for your role. Prefer writing a markdown file in the workflow folder instead of only answering in chat.
+
+Keep the output practical for an open-source maintainer. Call out uncertainty clearly.
+""",
+        encoding="utf-8",
+    )
+    print(f"created: {prompt_path}")
+PY
+}
+
 write_if_missing "$DEST_DIR/README.md" <<EOF
 # $WORKFLOW
 
@@ -179,9 +225,14 @@ EOF
     ;;
 esac
 
+generate_role_prompts
+
 echo
 echo "Workflow ready:"
 echo "  $DEST_DIR"
 echo
 echo "Launch panes with:"
 echo "  CLAUDE_WORKBENCH_IDEA_DIR=\"$DEST_DIR\" ./scripts/launch_claude_tmux.sh"
+echo
+echo "Launch with role-specific prompts:"
+echo "  CLAUDE_WORKBENCH_IDEA_DIR=\"$DEST_DIR\" CLAUDE_WORKBENCH_USE_ROLE_PROMPTS=1 ./scripts/launch_claude_tmux.sh"

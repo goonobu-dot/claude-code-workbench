@@ -9,10 +9,13 @@ CLAUDE_MODEL="${CLAUDE_WORKBENCH_MODEL:-sonnet}"
 CLAUDE_EFFORT="${CLAUDE_WORKBENCH_EFFORT:-low}"
 CLAUDE_PERMISSION_MODE="${CLAUDE_WORKBENCH_PERMISSION_MODE:-auto}"
 CLAUDE_APPEND_SYSTEM_PROMPT="${CLAUDE_WORKBENCH_APPEND_SYSTEM_PROMPT:-Fast interactive mode: keep responses concise unless the user asks for detail. Do not invoke deep-research automatically. For current news or web-backed requests, use one focused web search first and only run additional searches if the first result is clearly insufficient.}"
+CLAUDE_PROMPT="${CLAUDE_WORKBENCH_PROMPT:-}"
 AUTO_SUBMIT="${CLAUDE_WORKBENCH_AUTO_SUBMIT:-1}"
 TMUX_BIN="${TMUX_BIN:-/opt/homebrew/bin/tmux}"
 BASE_DIR="${CLAUDE_WORKBENCH_BASE:-$HOME/ClaudeCodeWorkbench}"
 IDEA_DIR="${CLAUDE_WORKBENCH_IDEA_DIR:-$BASE_DIR/Idea}"
+ROLE_PROMPT_DIR="${CLAUDE_WORKBENCH_ROLE_PROMPT_DIR:-$IDEA_DIR/prompts}"
+USE_ROLE_PROMPTS="${CLAUDE_WORKBENCH_USE_ROLE_PROMPTS:-0}"
 ATTACH="${CLAUDE_WORKBENCH_ATTACH:-1}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -58,7 +61,35 @@ fi
 pane_command() {
   local pane_number="$1"
   local pane_name="Claude Code $pane_number"
-  printf 'clear; printf "\\033]0;%s\\007"; echo "%s (%s/%s/%s)"; exec %q --model %q --effort %q --permission-mode %q --append-system-prompt %q --name %q' \
+  local pane_prompt="$CLAUDE_PROMPT"
+  local role_prompt_file="$ROLE_PROMPT_DIR/pane-$pane_number.md"
+
+  if [[ "$USE_ROLE_PROMPTS" == "1" && -f "$role_prompt_file" ]]; then
+    if [[ -n "$pane_prompt" ]]; then
+      pane_prompt="$(cat "$role_prompt_file")
+
+$pane_prompt"
+    else
+      pane_prompt="$(cat "$role_prompt_file")"
+    fi
+  fi
+
+  if [[ -n "$pane_prompt" ]]; then
+    printf 'clear; printf "\\033]0;%s\\007"; echo "%s (%s/%s/%s)"; exec %q --model %q --effort %q --permission-mode %q --append-system-prompt %q --name %q %q' \
+      "$pane_name" \
+      "$pane_name" \
+      "$CLAUDE_MODEL" \
+      "$CLAUDE_EFFORT" \
+      "$CLAUDE_PERMISSION_MODE" \
+      "$CLAUDE_COMMAND" \
+      "$CLAUDE_MODEL" \
+      "$CLAUDE_EFFORT" \
+      "$CLAUDE_PERMISSION_MODE" \
+      "$CLAUDE_APPEND_SYSTEM_PROMPT" \
+      "$pane_name" \
+      "$pane_prompt"
+  else
+    printf 'clear; printf "\\033]0;%s\\007"; echo "%s (%s/%s/%s)"; exec %q --model %q --effort %q --permission-mode %q --append-system-prompt %q --name %q' \
     "$pane_name" \
     "$pane_name" \
     "$CLAUDE_MODEL" \
@@ -70,6 +101,7 @@ pane_command() {
     "$CLAUDE_PERMISSION_MODE" \
     "$CLAUDE_APPEND_SYSTEM_PROMPT" \
     "$pane_name"
+  fi
 }
 
 for pane_number in $(seq 1 "$PANE_COUNT"); do

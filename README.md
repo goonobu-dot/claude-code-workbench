@@ -66,6 +66,14 @@ Create a reusable maintainer workflow folder before launching panes:
 CLAUDE_WORKBENCH_IDEA_DIR="$HOME/ClaudeCodeWorkbench/Idea" ./scripts/launch_claude_tmux.sh
 ```
 
+Launch with role-specific prompts generated from `pane-roles.md`:
+
+```bash
+CLAUDE_WORKBENCH_IDEA_DIR="$HOME/ClaudeCodeWorkbench/Idea" \
+CLAUDE_WORKBENCH_USE_ROLE_PROMPTS=1 \
+./scripts/launch_claude_tmux.sh
+```
+
 After the panes write their notes, create a handoff summary:
 
 ```bash

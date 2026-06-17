@@ -21,6 +21,7 @@ jobs:
         run: |
           tmpdir="$(mktemp -d)"
           ./scripts/new_workflow.sh issue-triage "$tmpdir"
+          test -f "$tmpdir/prompts/pane-1.md"
           ./scripts/close_workflow.sh "$tmpdir"
           test -f "$tmpdir/handoff-summary.md"
       - name: Installer smoke test
