@@ -27,6 +27,7 @@
 - Added `examples/feature-discovery-demo`.
 - Added `examples/release-prep-demo`.
 - Added `make demo` for a temporary one-command workflow demo.
+- Added `SECURITY.md` with reporting and workflow-sharing safety guidance.
 
 ## v0.5.0
 

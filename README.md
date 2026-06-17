@@ -191,6 +191,7 @@ Project operations:
 
 - [ROADMAP.md](ROADMAP.md)
 - [CHANGELOG.md](CHANGELOG.md)
+- [SECURITY.md](SECURITY.md)
 
 If you try it on a real or fictional maintainer task, share the result with the
 [usage report issue template](.github/ISSUE_TEMPLATE/usage_report.yml). Reports

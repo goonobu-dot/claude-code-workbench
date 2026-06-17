@@ -1,20 +1,35 @@
-# Security
+# Security Policy
 
-## Reporting A Vulnerability
+Claude Code Workbench is a local macOS/tmux utility. It does not run a hosted service, collect telemetry, or require cloud credentials.
 
-Please open a private advisory or contact the maintainer directly if you find a vulnerability.
+## Reporting Security Issues
 
-Do not publish:
+Open a GitHub issue if the report does not contain sensitive data. Use a private channel if the report requires unreleased exploit details or private logs.
 
-- API keys or access tokens
-- local prompt histories
-- terminal logs
-- Obsidian vault contents
-- `.env` files
-- generated agent output containing personal data
+Do not include secrets in public issues:
 
-## Local Behavior
+- API keys
+- access tokens
+- private keys
+- local absolute paths that reveal private usernames or project names
+- unpublished customer, employer, or client data
 
-This project launches local terminal sessions and does not intentionally send data anywhere by itself. The Claude Code CLI you run inside each pane may use its own account, configuration, and network behavior.
+## Before Sharing Workflow Output
 
-Review the scripts before running them with custom workspace paths or elevated permissions.
+Run the public safety audit:
+
+```bash
+./scripts/audit_public_safety.sh
+```
+
+For generated workflow folders, also run:
+
+```bash
+./scripts/validate_workflow.sh <workflow-dir>
+```
+
+These checks reduce common publishing mistakes. They do not prove that generated notes are factually correct or safe to publish without human review.
+
+## Local Boundary
+
+This project launches local CLI sessions and writes markdown files in local folders. Review prompts, generated notes, archives, and issue attachments before sharing them.
