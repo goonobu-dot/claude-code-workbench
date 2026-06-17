@@ -1,4 +1,4 @@
-.PHONY: help doctor doctor-report first-run demo demo-transcript recommend continuous-improvement-check test syntax safety smoke install-smoke release-check
+.PHONY: help doctor doctor-report first-run demo demo-transcript recommend japanese-docs-check continuous-improvement-check test syntax safety smoke install-smoke release-check
 
 help:
 	@printf '%s\n' \
@@ -9,6 +9,7 @@ help:
 		'  make demo          Generate, validate, and close a temporary demo workflow' \
 		'  make demo-transcript Write docs/demo-transcript.md for GitHub readers' \
 		'  make recommend     Recommend a workflow for TASK=issue|pr|release|feature|security|docs|dependency' \
+		'  make japanese-docs-check Verify Japanese onboarding documentation' \
 		'  make continuous-improvement-check Verify 50 recorded add-and-test loops' \
 		'  make test          Run config, syntax, safety, and workflow smoke tests' \
 		'  make syntax        Check shell script syntax' \
@@ -44,11 +45,15 @@ demo-transcript:
 recommend:
 	./scripts/recommend_workflow.sh "$${TASK:-issue}"
 
+japanese-docs-check:
+	./scripts/check_japanese_docs.sh
+
 continuous-improvement-check:
 	./scripts/check_continuous_improvement_loops.sh docs/continuous-improvement-loops.md 50
 
 test: syntax
 	./Tests/test_claude_workbench_config.sh
+	$(MAKE) japanese-docs-check
 	$(MAKE) continuous-improvement-check
 	./scripts/check_docs_links.sh
 	./scripts/audit_public_safety.sh

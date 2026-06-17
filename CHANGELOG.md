@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added Japanese onboarding documentation, share copy, FAQ, and OSS credit application notes.
+- Added `scripts/check_japanese_docs.sh` and `make japanese-docs-check` to keep Japanese docs covered by CI.
 - Added `examples/pr-review-demo`, a fictional end-to-end pull request review workflow.
 - Added role-specific prompt generation for workflow panes.
 - Improved first-run diagnostics with actionable setup recommendations.

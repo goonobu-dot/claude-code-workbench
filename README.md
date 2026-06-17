@@ -4,6 +4,8 @@
 [![Release](https://img.shields.io/github/v/release/goonobu-dot/claude-code-workbench)](https://github.com/goonobu-dot/claude-code-workbench/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+Japanese readers: start with [README.ja.md](README.ja.md) or the full [Japanese documentation hub](docs/ja/README.md).
+
 A macOS/tmux workbench for running up to 9 Claude Code CLI sessions in one Terminal window.
 
 This is a focused public version of a real local workflow: launch several Claude Code panes, point them at one shared idea folder, and use them for research, ideation, implementation planning, and comparison.
