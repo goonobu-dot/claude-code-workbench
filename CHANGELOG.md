@@ -41,6 +41,7 @@
 - Updated contributor guidance for release checks, doctor reports, and workflow validation.
 - Added `docs/why.md`.
 - Added `docs/publication-checklist.md`.
+- Added GitHub issue template contact links for commands and troubleshooting.
 
 ## v0.5.0
 

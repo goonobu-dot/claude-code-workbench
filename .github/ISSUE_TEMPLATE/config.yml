@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Command reference
+    url: https://github.com/goonobu-dot/claude-code-workbench/blob/main/docs/commands.md
+    about: Start here for available commands and common workflows.
+  - name: Troubleshooting
+    url: https://github.com/goonobu-dot/claude-code-workbench/blob/main/docs/troubleshooting.md
+    about: Check setup diagnostics before opening a bug report.
