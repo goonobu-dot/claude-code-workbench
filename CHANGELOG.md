@@ -17,6 +17,8 @@
 - Added `docs/workflow-sharing.md` with export/import usage and safety boundaries.
 - Connected workflow sharing to the showcase and workflow safety checklist.
 - Added `scripts/create_workflow_from_url.sh` for starting workflows from public GitHub issue and pull request URLs.
+- Surfaced the GitHub URL workflow helper in the README and showcase.
+- Added a usage report issue template so adopters can share successful workflows and setup friction.
 
 ## v0.5.0
 

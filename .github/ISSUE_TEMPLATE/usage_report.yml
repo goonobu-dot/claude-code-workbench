@@ -1,0 +1,39 @@
+name: Usage report
+description: Share a real or trial workflow result from Claude Code Workbench
+title: "[Usage]: "
+labels: ["usage-report"]
+body:
+  - type: dropdown
+    id: workflow
+    attributes:
+      label: Which workflow did you run?
+      options:
+        - Issue triage
+        - PR review
+        - Release prep
+        - Feature discovery
+        - Custom workflow
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: What did the workbench help you decide or produce?
+      description: Describe the useful output, decision, or comparison the panes helped with.
+      placeholder: |
+        Example: It helped compare three possible fixes and produce a maintainer handoff summary.
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Setup notes
+      description: Include pane count, workflow command, and whether you used role prompts.
+      placeholder: |
+        ./scripts/create_workflow_from_url.sh https://github.com/owner/repo/issues/123
+        CLAUDE_WORKBENCH_USE_ROLE_PROMPTS=1
+  - type: textarea
+    id: friction
+    attributes:
+      label: What was confusing or slow?
+      description: Small friction reports are useful even when the workflow succeeded.

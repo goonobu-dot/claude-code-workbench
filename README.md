@@ -72,6 +72,13 @@ Create a reusable maintainer workflow folder before launching panes:
 CLAUDE_WORKBENCH_IDEA_DIR="$HOME/ClaudeCodeWorkbench/Idea" ./scripts/launch_claude_tmux.sh
 ```
 
+Start directly from a public GitHub issue or pull request URL:
+
+```bash
+./scripts/create_workflow_from_url.sh https://github.com/owner/repo/issues/123
+./scripts/create_workflow_from_url.sh https://github.com/owner/repo/pull/123
+```
+
 Launch with role-specific prompts generated from `pane-roles.md`:
 
 ```bash
@@ -181,6 +188,10 @@ Project operations:
 
 - [ROADMAP.md](ROADMAP.md)
 - [CHANGELOG.md](CHANGELOG.md)
+
+If you try it on a real or fictional maintainer task, share the result with the
+[usage report issue template](.github/ISSUE_TEMPLATE/usage_report.yml). Reports
+about confusing setup steps are as useful as reports about successful workflows.
 
 ## Safety Notes
 
