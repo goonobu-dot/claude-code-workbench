@@ -1,10 +1,11 @@
-.PHONY: help doctor doctor-report demo test syntax safety smoke install-smoke release-check
+.PHONY: help doctor doctor-report first-run demo test syntax safety smoke install-smoke release-check
 
 help:
 	@printf '%s\n' \
 		'Targets:' \
 		'  make doctor        Check local setup without launching panes' \
 		'  make doctor-report Write doctor-report.md for bug reports' \
+		'  make first-run     Run doctor, demo, and workflow discovery' \
 		'  make demo          Generate, validate, and close a temporary demo workflow' \
 		'  make test          Run config, syntax, safety, and workflow smoke tests' \
 		'  make syntax        Check shell script syntax' \
@@ -19,6 +20,12 @@ doctor:
 doctor-report:
 	-./scripts/doctor.sh --report doctor-report.md
 	@printf 'Doctor report ready: doctor-report.md\n'
+
+first-run:
+	./scripts/doctor.sh
+	$(MAKE) demo
+	./scripts/new_workflow.sh --list --verbose
+	@printf 'First-run check complete\n'
 
 demo:
 	@set -e; \

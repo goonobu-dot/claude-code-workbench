@@ -51,6 +51,7 @@
 - Added GitHub metadata capture for URL-created workflows when `gh` or `AGENT_WORKBENCH_GITHUB_METADATA_FILE` is available.
 - Added README sections for target users, five-minute value, example outputs, and usage reports.
 - Added security triage, documentation improvement, and dependency update example workflows.
+- Added `docs/install.md`, `make first-run`, and `scripts/uninstall.sh` to reduce first-time setup friction.
 
 ## v0.5.0
 
