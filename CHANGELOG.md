@@ -23,6 +23,7 @@
 - Added `./scripts/doctor.sh --report` for shareable Markdown diagnostics.
 - Updated the bug report template to request the generated doctor report.
 - Added `scripts/validate_workflow.sh` for pre-export workflow checks.
+- Added `./scripts/new_workflow.sh --list` for quick workflow discovery.
 
 ## v0.5.0
 

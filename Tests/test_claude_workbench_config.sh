@@ -60,6 +60,8 @@ check_contains Makefile 'test:'
 check_contains Makefile './Tests/test_claude_workbench_config.sh'
 check_contains Makefile './scripts/audit_public_safety.sh'
 check_contains scripts/new_workflow.sh 'issue-triage'
+check_contains scripts/new_workflow.sh '--list'
+check_contains scripts/new_workflow.sh 'list_workflows'
 check_contains scripts/new_workflow.sh 'CLAUDE_WORKBENCH_IDEA_DIR'
 check_contains scripts/new_workflow.sh 'generate_role_prompts'
 check_contains scripts/new_workflow.sh 'prompts_dir / f"pane-{pane_number}.md"'
@@ -141,6 +143,7 @@ check_contains docs/workflow-sharing.md './scripts/export_workflow.sh'
 check_contains docs/workflow-sharing.md './scripts/import_workflow.sh'
 check_contains docs/workflow-sharing.md 'Path traversal'
 check_contains docs/workflow-templates.md './scripts/create_workflow_from_url.sh'
+check_contains docs/workflow-templates.md './scripts/new_workflow.sh --list'
 check_contains examples/README.md 'issue-triage-demo'
 check_contains examples/README.md 'docs/workflow-sharing.md'
 check_contains examples/README.md 'pr-review-demo'
@@ -175,6 +178,9 @@ test -f "$doctor_report" || { echo "missing doctor report"; fail=1; }
 check_contains "$doctor_report" '# Claude Code Workbench Doctor Report'
 check_contains "$doctor_report" '## Raw Output'
 check_contains "$doctor_report" '```text'
+
+./scripts/new_workflow.sh --list | grep -Fq 'issue-triage' || { echo "workflow list missing issue-triage"; fail=1; }
+./scripts/new_workflow.sh --list | grep -Fq 'feature-discovery' || { echo "workflow list missing feature-discovery"; fail=1; }
 
 export_dir="$tmp_home/Idea/export-workflow"
 mkdir -p "$export_dir/prompts"

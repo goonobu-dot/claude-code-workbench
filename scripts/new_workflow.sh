@@ -8,6 +8,7 @@ usage() {
   cat <<'EOF'
 Usage:
   ./scripts/new_workflow.sh <workflow> [destination]
+  ./scripts/new_workflow.sh --list
 
 Workflows:
   issue-triage
@@ -20,6 +21,20 @@ Examples:
   ./scripts/new_workflow.sh pr-review "$HOME/ClaudeCodeWorkbench/Idea/my-review"
 EOF
 }
+
+list_workflows() {
+  cat <<'EOF'
+issue-triage
+pr-review
+release-prep
+feature-discovery
+EOF
+}
+
+if [[ "$WORKFLOW" == "--list" ]]; then
+  list_workflows
+  exit 0
+fi
 
 if [[ -z "$WORKFLOW" || "$WORKFLOW" == "-h" || "$WORKFLOW" == "--help" ]]; then
   usage
