@@ -46,11 +46,9 @@ One-command install:
 curl -fsSL https://raw.githubusercontent.com/goonobu-dot/claude-code-workbench/main/scripts/install.sh | bash
 ```
 
-Clone or copy this repository to the default local location:
+Then launch:
 
 ```bash
-mkdir -p "$HOME/ClaudeCodeWorkbench"
-git clone <your-fork-url> "$HOME/ClaudeCodeWorkbench/claude-code-workbench"
 cd "$HOME/ClaudeCodeWorkbench/claude-code-workbench"
 ./scripts/launch_claude_tmux.sh
 ```
@@ -86,6 +84,15 @@ All panes use one shared idea folder by default:
 
 ```bash
 ~/ClaudeCodeWorkbench/Idea
+```
+
+Manual clone instead of the installer:
+
+```bash
+mkdir -p "$HOME/ClaudeCodeWorkbench"
+git clone https://github.com/goonobu-dot/claude-code-workbench.git "$HOME/ClaudeCodeWorkbench/claude-code-workbench"
+cd "$HOME/ClaudeCodeWorkbench/claude-code-workbench"
+./scripts/doctor.sh
 ```
 
 ## Controls

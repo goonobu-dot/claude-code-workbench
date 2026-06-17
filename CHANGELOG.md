@@ -8,6 +8,7 @@
 - Added a README terminal preview SVG for first-time visitors.
 - Redacted absolute local paths from generated workflow handoff summaries.
 - Added `question.md` templates for every generated workflow and expanded CI smoke coverage.
+- Clarified Quick Start so installer and manual clone paths are separate.
 
 ## v0.5.0
 
