@@ -38,6 +38,7 @@
 - Added `make release-check` for pre-release validation.
 - Extended `doctor.sh` to check for `git` and `python3`.
 - Added `make demo` to the README Quick Start.
+- Updated contributor guidance for release checks, doctor reports, and workflow validation.
 
 ## v0.5.0
 
