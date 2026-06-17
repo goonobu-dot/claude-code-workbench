@@ -12,3 +12,5 @@ Examples show what the workbench produces when used for real maintainer-style ta
 The workbench is easier to understand when readers can see the files it creates and the kind of maintainer decision it supports.
 
 Examples should not include real private logs, credentials, customer data, or unpublished project information.
+
+For sharing generated workflow folders, see [docs/workflow-sharing.md](../docs/workflow-sharing.md).

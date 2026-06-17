@@ -14,6 +14,7 @@
 - Updated contributor guidance and roadmap items to match the current validation flow.
 - Added `scripts/export_workflow.sh` for sharing markdown workflow folders with private-data checks.
 - Added `scripts/import_workflow.sh` for safely unpacking shared workflow archives.
+- Added `docs/workflow-sharing.md` with export/import usage and safety boundaries.
 
 ## v0.5.0
 
