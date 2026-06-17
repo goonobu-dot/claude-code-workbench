@@ -54,6 +54,8 @@ check_contains scripts/doctor.sh 'brew install tmux'
 check_contains scripts/doctor.sh 'CLAUDE_WORKBENCH_COMMAND'
 check_contains scripts/doctor.sh '--report'
 check_contains scripts/doctor.sh 'Doctor report written to:'
+check_contains scripts/check_docs_links.sh 'Documentation links passed'
+check_contains scripts/check_docs_links.sh 'Broken documentation links'
 check_contains scripts/install.sh 'Claude Code Workbench installer'
 check_contains scripts/install.sh 'CLAUDE_WORKBENCH_INSTALL_DIR'
 check_contains scripts/install.sh 'make demo'
@@ -66,6 +68,7 @@ check_contains Makefile 'doctor-report:'
 check_contains Makefile 'doctor-report.md'
 check_contains Makefile './Tests/test_claude_workbench_config.sh'
 check_contains Makefile './scripts/audit_public_safety.sh'
+check_contains Makefile './scripts/check_docs_links.sh'
 check_contains scripts/new_workflow.sh 'issue-triage'
 check_contains scripts/new_workflow.sh '--list'
 check_contains scripts/new_workflow.sh 'list_workflows'
@@ -222,6 +225,7 @@ make demo >/dev/null
 make doctor-report >/dev/null || true
 test -f doctor-report.md || { echo "missing doctor-report.md"; fail=1; }
 rm -f doctor-report.md
+./scripts/check_docs_links.sh >/dev/null
 
 export_dir="$tmp_home/Idea/export-workflow"
 mkdir -p "$export_dir/prompts"

@@ -29,6 +29,7 @@ demo:
 
 test: syntax
 	./Tests/test_claude_workbench_config.sh
+	./scripts/check_docs_links.sh
 	./scripts/audit_public_safety.sh
 	$(MAKE) smoke
 
