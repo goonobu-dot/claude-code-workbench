@@ -86,6 +86,9 @@ check_contains scripts/close_workflow.sh 'display_workflow_dir'
 check_contains scripts/close_workflow.sh '<outside-current-directory>'
 check_contains scripts/export_workflow.sh 'Workflow export ready'
 check_contains scripts/export_workflow.sh 'Potential private data found'
+check_contains scripts/validate_workflow.sh 'Workflow validation passed'
+check_contains scripts/validate_workflow.sh 'Missing required workflow file'
+check_contains scripts/validate_workflow.sh 'Potential private data found'
 check_contains scripts/import_workflow.sh 'Workflow import ready'
 check_contains scripts/import_workflow.sh 'Unsafe archive path'
 check_contains README.md 'docs/oss-maintainer-use-cases.md'
@@ -133,6 +136,7 @@ check_contains docs/troubleshooting.md 'CLAUDE_WORKBENCH_COMMAND'
 check_contains docs/troubleshooting.md 'CLAUDE_WORKBENCH_AUTO_SUBMIT=0'
 check_contains docs/troubleshooting.md './scripts/doctor.sh --report doctor-report.md'
 check_contains docs/workflow-sharing.md 'Export A Workflow'
+check_contains docs/workflow-sharing.md './scripts/validate_workflow.sh'
 check_contains docs/workflow-sharing.md './scripts/export_workflow.sh'
 check_contains docs/workflow-sharing.md './scripts/import_workflow.sh'
 check_contains docs/workflow-sharing.md 'Path traversal'
@@ -177,6 +181,7 @@ mkdir -p "$export_dir/prompts"
 printf '# Question\n\nReview this fictional issue.\n' >"$export_dir/question.md"
 printf '# Roles\n\nPane 1: Review.\n' >"$export_dir/pane-roles.md"
 printf '# Prompt\n' >"$export_dir/prompts/pane-1.md"
+./scripts/validate_workflow.sh "$export_dir" >/dev/null
 export_file="$tmp_home/export-workflow.tar.gz"
 ./scripts/export_workflow.sh "$export_dir" "$export_file" >/dev/null
 test -f "$export_file" || { echo "missing export file: $export_file"; fail=1; }
@@ -186,6 +191,10 @@ import_dir="$tmp_home/imported"
 test -f "$import_dir/export-workflow/question.md" || { echo "missing imported question.md"; fail=1; }
 private_export_path='/'"Users"'/admin/private'
 printf '# Leak\n\n%s\n' "$private_export_path" >"$export_dir/leak.md"
+if ./scripts/validate_workflow.sh "$export_dir" >/dev/null 2>&1; then
+  echo "workflow validation should fail when markdown contains a local absolute path"
+  fail=1
+fi
 if ./scripts/export_workflow.sh "$export_dir" "$tmp_home/leak.tar.gz" >/dev/null 2>&1; then
   echo "export should fail when markdown contains a local absolute path"
   fail=1

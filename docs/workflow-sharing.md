@@ -16,6 +16,12 @@ After panes write their markdown notes, generate the handoff:
 ./scripts/close_workflow.sh "$HOME/ClaudeCodeWorkbench/Idea/pr-review-demo"
 ```
 
+Validate the workflow before sharing it:
+
+```bash
+./scripts/validate_workflow.sh "$HOME/ClaudeCodeWorkbench/Idea/pr-review-demo"
+```
+
 Then export only markdown files:
 
 ```bash
