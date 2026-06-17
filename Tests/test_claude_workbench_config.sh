@@ -87,6 +87,10 @@ check_contains scripts/new_workflow.sh 'Paste the user problem'
 check_contains scripts/create_workflow_from_url.sh 'Workflow from URL ready'
 check_contains scripts/create_workflow_from_url.sh 'github.com'
 check_contains scripts/create_workflow_from_url.sh 'Canonical URL'
+check_contains scripts/create_workflow_from_url.sh 'AGENT_WORKBENCH_GITHUB_METADATA_FILE'
+check_contains scripts/create_workflow_from_url.sh 'gh api'
+check_contains scripts/create_workflow_from_url.sh 'GitHub Metadata'
+check_contains scripts/create_workflow_from_url.sh 'Body Excerpt'
 check_contains scripts/create_workflow_from_url.sh 'issue-triage'
 check_contains scripts/create_workflow_from_url.sh 'pr-review'
 check_contains Makefile 'for workflow in issue-triage pr-review release-prep feature-discovery'
@@ -116,6 +120,10 @@ check_contains scripts/import_workflow.sh 'workflow-manifest.json'
 check_contains scripts/import_workflow.sh 'Unsafe archive path'
 check_contains README.md 'docs/oss-maintainer-use-cases.md'
 check_contains README.md 'docs/showcase.md'
+check_contains README.md 'Who This Is For'
+check_contains README.md 'What You Get In 5 Minutes'
+check_contains README.md 'Example Outputs'
+check_contains README.md 'Share A Usage Report'
 check_contains README.md 'docs/why.md'
 check_contains README.md 'docs/one-minute-demo.md'
 check_contains README.md 'docs/evaluation-guide.md'
@@ -141,6 +149,9 @@ check_contains README.md 'Manual clone instead of the installer'
 check_contains README.md 'https://github.com/goonobu-dot/claude-code-workbench.git'
 check_not_contains README.md '<your-fork-url>'
 check_contains README.md 'examples/issue-triage-demo'
+check_contains README.md 'examples/security-triage-demo'
+check_contains README.md 'examples/docs-improvement-demo'
+check_contains README.md 'examples/dependency-update-demo'
 check_contains README.md 'examples/release-prep-demo'
 check_contains README.md 'examples/feature-discovery-demo'
 check_contains README.md '.github/ISSUE_TEMPLATE/usage_report.yml'
@@ -171,6 +182,10 @@ check_contains docs/why.md 'Why This Exists'
 check_contains docs/why.md 'single chat thread'
 check_contains docs/why.md 'parallel maintainer thinking'
 check_contains docs/showcase.md 'GitHub issue or pull request URL'
+check_contains docs/showcase.md 'security-triage-demo'
+check_contains docs/showcase.md 'docs-improvement-demo'
+check_contains docs/showcase.md 'dependency-update-demo'
+check_contains docs/showcase.md 'demo recording'
 check_contains docs/one-minute-demo.md 'One-Minute Demo'
 check_contains docs/one-minute-demo.md './scripts/create_workflow_from_url.sh https://github.com/owner/repo/issues/123'
 check_contains docs/one-minute-demo.md 'make demo'
@@ -217,6 +232,9 @@ check_contains docs/workflow-templates.md './scripts/create_workflow_from_url.sh
 check_contains docs/workflow-templates.md './scripts/new_workflow.sh --list'
 check_contains docs/workflow-templates.md './scripts/new_workflow.sh --list --verbose'
 check_contains examples/README.md 'issue-triage-demo'
+check_contains examples/README.md 'security-triage-demo'
+check_contains examples/README.md 'docs-improvement-demo'
+check_contains examples/README.md 'dependency-update-demo'
 check_contains examples/README.md 'docs/workflow-sharing.md'
 check_contains examples/README.md 'pr-review-demo'
 check_contains examples/README.md 'release-prep-demo'
@@ -235,6 +253,12 @@ check_contains examples/release-prep-demo/handoff-summary.md 'Workflow Handoff S
 check_contains examples/feature-discovery-demo/README.md 'Fictional demo'
 check_contains examples/feature-discovery-demo/decision-memo.md 'Recommended Scope'
 check_contains examples/feature-discovery-demo/handoff-summary.md 'Workflow Handoff Summary'
+check_contains examples/security-triage-demo/README.md 'Fictional demo'
+check_contains examples/security-triage-demo/security-triage.md 'Security Triage'
+check_contains examples/docs-improvement-demo/README.md 'Fictional demo'
+check_contains examples/docs-improvement-demo/docs-plan.md 'Documentation Improvement Plan'
+check_contains examples/dependency-update-demo/README.md 'Fictional demo'
+check_contains examples/dependency-update-demo/update-review.md 'Dependency Update Review'
 
 check_not_contains scripts/launch_claude_tmux.sh "$private_home"
 check_not_contains scripts/launch_claude_tmux.applescript "$private_home"
@@ -324,5 +348,22 @@ pr_workflow_dir="$tmp_home/from-pr-url"
 test -f "$pr_workflow_dir/final-review.md" || { echo "missing PR review output from URL workflow"; fail=1; }
 check_contains "$pr_workflow_dir/question.md" 'https://github.com/example/project/pull/7'
 check_contains "$pr_workflow_dir/question.md" 'Canonical URL: https://github.com/example/project/pull/7'
+
+metadata_file="$tmp_home/github-metadata.json"
+cat >"$metadata_file" <<'JSON'
+{
+  "title": "Crash when launch path contains spaces",
+  "state": "open",
+  "user": {"login": "maintainer-example"},
+  "body": "Opening the workbench from a folder with spaces causes the launch command to fail before panes are created."
+}
+JSON
+metadata_workflow_dir="$tmp_home/from-url-metadata"
+AGENT_WORKBENCH_GITHUB_METADATA_FILE="$metadata_file" ./scripts/create_workflow_from_url.sh "https://github.com/example/project/issues/99" "$metadata_workflow_dir" >/dev/null
+check_contains "$metadata_workflow_dir/question.md" '## GitHub Metadata'
+check_contains "$metadata_workflow_dir/question.md" 'Title: Crash when launch path contains spaces'
+check_contains "$metadata_workflow_dir/question.md" 'State: open'
+check_contains "$metadata_workflow_dir/question.md" 'Author: maintainer-example'
+check_contains "$metadata_workflow_dir/question.md" 'Body Excerpt: Opening the workbench from a folder with spaces'
 
 exit "$fail"

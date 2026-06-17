@@ -12,6 +12,35 @@ This project is not affiliated with Anthropic.
 
 ![Claude Code Workbench terminal preview](docs/assets/workbench-preview.svg)
 
+## Who This Is For
+
+- OSS maintainers who need faster issue triage, pull request review, release preparation, or security screening.
+- Developers who want several independent Claude Code angles on one local folder without building a hosted system.
+- Researchers and builders who want reusable markdown outputs instead of scattered chat transcripts.
+
+## What You Get In 5 Minutes
+
+- a local 4, 6, or 9 pane tmux workbench
+- workflow templates for issue triage, PR review, release prep, and feature discovery
+- one shared folder containing role prompts, pane notes, and a final handoff summary
+- a doctor report and quality gates so setup problems are easier to diagnose
+
+## Example Outputs
+
+- [issue triage result](examples/issue-triage-demo/final-triage.md)
+- [pull request review verdict](examples/pr-review-demo/final-review.md)
+- [release checklist](examples/release-prep-demo/release-checklist.md)
+- [feature decision memo](examples/feature-discovery-demo/decision-memo.md)
+- [security triage](examples/security-triage-demo/security-triage.md)
+- [documentation improvement plan](examples/docs-improvement-demo/docs-plan.md)
+- [dependency update review](examples/dependency-update-demo/update-review.md)
+
+## Share A Usage Report
+
+If the workbench helps you make a real maintenance decision, open a
+[usage report](.github/ISSUE_TEMPLATE/usage_report.yml). Short reports are
+useful: the workflow used, what it produced, and where the setup was confusing.
+
 ## Why This Exists
 
 One AI-agent chat is useful. Several panes are better when you want independent angles on the same problem.
@@ -195,6 +224,9 @@ Example:
 - [examples/pr-review-demo](examples/pr-review-demo)
 - [examples/release-prep-demo](examples/release-prep-demo)
 - [examples/feature-discovery-demo](examples/feature-discovery-demo)
+- [examples/security-triage-demo](examples/security-triage-demo)
+- [examples/docs-improvement-demo](examples/docs-improvement-demo)
+- [examples/dependency-update-demo](examples/dependency-update-demo)
 
 Project operations:
 

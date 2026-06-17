@@ -48,6 +48,9 @@
 - Added `SUPPORT.md` with first-check, troubleshooting, and issue-reporting guidance.
 - Added `docs/quality-gates.md` to explain local, safety, CI, and user-reproduction checks.
 - Added `docs/evaluation-guide.md` for a five-minute first-user evaluation path.
+- Added GitHub metadata capture for URL-created workflows when `gh` or `AGENT_WORKBENCH_GITHUB_METADATA_FILE` is available.
+- Added README sections for target users, five-minute value, example outputs, and usage reports.
+- Added security triage, documentation improvement, and dependency update example workflows.
 
 ## v0.5.0
 

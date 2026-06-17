@@ -31,6 +31,14 @@ The workbench makes that workflow repeatable without building a large platform.
 - `scripts/export_workflow.sh` packages markdown workflow output for sharing after checking for common private-data leaks.
 - `scripts/import_workflow.sh` refuses unsafe archive paths before unpacking shared workflows.
 
+## Example Outputs
+
+- `examples/security-triage-demo` shows how several panes can separate impact, reproduction limits, mitigation, and disclosure wording.
+- `examples/docs-improvement-demo` shows how the workbench turns a confusing setup report into a concrete documentation edit plan.
+- `examples/dependency-update-demo` shows how compatibility, tests, and release risk can be reviewed in parallel.
+
+For a demo recording, capture the `make demo` path plus `./scripts/close_workflow.sh` so viewers can see the folder-to-summary loop without needing private project data.
+
 ## Boundary
 
 This is not a hosted service and does not manage accounts. It launches local terminal sessions and keeps generated work in a local shared folder.
