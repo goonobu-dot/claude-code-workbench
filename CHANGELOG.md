@@ -6,6 +6,7 @@
 - Added role-specific prompt generation for workflow panes.
 - Improved first-run diagnostics with actionable setup recommendations.
 - Added a README terminal preview SVG for first-time visitors.
+- Redacted absolute local paths from generated workflow handoff summaries.
 
 ## v0.5.0
 

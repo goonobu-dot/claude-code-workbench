@@ -47,13 +47,45 @@ line_count() {
   wc -l <"$path" | tr -d ' '
 }
 
+display_workflow_dir() {
+  python3 - "$WORKFLOW_DIR" "$PWD" "${HOME:-}" <<'PY'
+from pathlib import Path
+import sys
+
+path = Path(sys.argv[1]).resolve()
+cwd = Path(sys.argv[2]).resolve()
+home_arg = sys.argv[3]
+home = Path(home_arg).resolve() if home_arg else None
+
+try:
+    print(path.relative_to(cwd))
+    raise SystemExit
+except ValueError:
+    pass
+
+if home is not None:
+    try:
+        rel = path.relative_to(home)
+        if str(rel) == ".":
+            print("~")
+        else:
+            print(f"~/{rel}")
+        raise SystemExit
+    except ValueError:
+        pass
+
+print(f"<outside-current-directory>/{path.name}")
+PY
+}
+
 now="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 tmp_file="$(mktemp)"
+workflow_display="$(display_workflow_dir)"
 
 {
   echo "# Workflow Handoff Summary"
   echo
-  echo "- Workflow directory: \`$WORKFLOW_DIR\`"
+  echo "- Workflow directory: \`$workflow_display\`"
   echo "- Generated at: \`$now\`"
   echo
   echo "## Files"
