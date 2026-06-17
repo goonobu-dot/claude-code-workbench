@@ -32,6 +32,7 @@
 - Added `docs/faq.md` for local safety, GitHub visibility, and API-key boundaries.
 - Added `make doctor-report` for issue-ready diagnostics.
 - Added `docs/commands.md`.
+- Updated installer next-step guidance for `make demo`, workflow listing, and doctor reports.
 
 ## v0.5.0
 

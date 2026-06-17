@@ -41,9 +41,16 @@ fi
 echo
 echo "Installed."
 echo
-echo "Launch from Terminal:"
+echo "Try the one-command demo:"
 echo "  cd \"$INSTALL_DIR\""
+echo "  make demo"
+echo
+echo "Launch from Terminal:"
 echo "  ./scripts/launch_claude_tmux.sh"
 echo
 echo "Create a maintainer workflow:"
+echo "  ./scripts/new_workflow.sh --list"
 echo "  ./scripts/new_workflow.sh issue-triage"
+echo
+echo "If setup fails, create a report for a GitHub issue:"
+echo "  make doctor-report"
