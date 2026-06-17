@@ -44,6 +44,7 @@
 - Added GitHub issue template contact links for commands and troubleshooting.
 - Added `./scripts/new_workflow.sh --list --verbose`.
 - Added canonical GitHub URLs to workflows created from issue or pull request URLs.
+- Added a `Suggested Fixes` section to generated doctor reports.
 
 ## v0.5.0
 

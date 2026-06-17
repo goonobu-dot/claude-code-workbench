@@ -238,6 +238,7 @@ doctor_report="$tmp_home/doctor-report.md"
 ./scripts/doctor.sh --report "$doctor_report" >/dev/null || true
 test -f "$doctor_report" || { echo "missing doctor report"; fail=1; }
 check_contains "$doctor_report" '# Claude Code Workbench Doctor Report'
+check_contains "$doctor_report" '## Suggested Fixes'
 check_contains "$doctor_report" '## Raw Output'
 check_contains "$doctor_report" '```text'
 

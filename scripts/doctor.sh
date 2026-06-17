@@ -76,6 +76,16 @@ write_report() {
     fi
     echo "- Generated: $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
     echo
+    echo "## Suggested Fixes"
+    echo
+    if (( ${#recommendations[@]} > 0 )); then
+      for recommendation in "${recommendations[@]}"; do
+        echo "- $recommendation"
+      done
+    else
+      echo "- None"
+    fi
+    echo
     echo "## Raw Output"
     echo
     echo '```text'
