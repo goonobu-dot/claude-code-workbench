@@ -2,6 +2,12 @@
 
 Use this path when you want to understand the project without configuring a real repository first.
 
+Fastest path:
+
+```bash
+make demo
+```
+
 ## 1. Create A Workflow From A Public URL
 
 ```bash

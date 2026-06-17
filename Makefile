@@ -1,9 +1,10 @@
-.PHONY: help doctor test syntax safety smoke install-smoke
+.PHONY: help doctor demo test syntax safety smoke install-smoke
 
 help:
 	@printf '%s\n' \
 		'Targets:' \
 		'  make doctor        Check local setup without launching panes' \
+		'  make demo          Generate, validate, and close a temporary demo workflow' \
 		'  make test          Run config, syntax, safety, and workflow smoke tests' \
 		'  make syntax        Check shell script syntax' \
 		'  make safety        Run public safety audit' \
@@ -12,6 +13,14 @@ help:
 
 doctor:
 	./scripts/doctor.sh
+
+demo:
+	@set -e; \
+	tmpdir="$$(mktemp -d)"; \
+	./scripts/create_workflow_from_url.sh https://github.com/owner/repo/issues/123 "$$tmpdir" >/dev/null; \
+	./scripts/validate_workflow.sh "$$tmpdir" >/dev/null; \
+	./scripts/close_workflow.sh "$$tmpdir" >/dev/null; \
+	printf 'Demo workflow ready: %s\n' "$$tmpdir"
 
 test: syntax
 	./Tests/test_claude_workbench_config.sh
