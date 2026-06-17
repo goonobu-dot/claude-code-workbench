@@ -40,6 +40,7 @@
 - Added `make demo` to the README Quick Start.
 - Updated contributor guidance for release checks, doctor reports, and workflow validation.
 - Added `docs/why.md`.
+- Added `docs/publication-checklist.md`.
 
 ## v0.5.0
 
