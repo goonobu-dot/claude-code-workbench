@@ -7,6 +7,7 @@
 - Improved first-run diagnostics with actionable setup recommendations.
 - Added a README terminal preview SVG for first-time visitors.
 - Redacted absolute local paths from generated workflow handoff summaries.
+- Added `question.md` templates for every generated workflow and expanded CI smoke coverage.
 
 ## v0.5.0
 

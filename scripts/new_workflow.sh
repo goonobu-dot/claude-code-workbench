@@ -140,6 +140,11 @@ EOF
 EOF
     ;;
   pr-review)
+    write_if_missing "$DEST_DIR/question.md" <<'EOF'
+# PR Review
+
+Paste the pull request link, diff summary, test results, and review goals here.
+EOF
     write_if_missing "$DEST_DIR/pane-roles.md" <<'EOF'
 # Pane Roles
 
@@ -168,6 +173,11 @@ EOF
 EOF
     ;;
   release-prep)
+    write_if_missing "$DEST_DIR/question.md" <<'EOF'
+# Release Prep
+
+Paste the target version, merged changes, known risks, and release constraints here.
+EOF
     write_if_missing "$DEST_DIR/pane-roles.md" <<'EOF'
 # Pane Roles
 
@@ -194,6 +204,11 @@ EOF
 EOF
     ;;
   feature-discovery)
+    write_if_missing "$DEST_DIR/question.md" <<'EOF'
+# Feature Discovery
+
+Paste the user problem, constraints, examples, and open questions here.
+EOF
     write_if_missing "$DEST_DIR/pane-roles.md" <<'EOF'
 # Pane Roles
 
