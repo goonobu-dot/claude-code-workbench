@@ -10,6 +10,7 @@
 - Added `question.md` templates for every generated workflow and expanded CI smoke coverage.
 - Clarified Quick Start so installer and manual clone paths are separate.
 - Added a troubleshooting guide for common first-run setup problems.
+- Added a `Makefile` with standard doctor, test, safety, smoke, and installer-smoke targets.
 
 ## v0.5.0
 

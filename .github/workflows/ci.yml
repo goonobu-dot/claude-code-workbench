@@ -11,28 +11,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Check shell syntax
-        run: bash -n scripts/*.sh Tests/*.sh
-      - name: Check workbench config
-        run: ./Tests/test_claude_workbench_config.sh
-      - name: Public safety audit
-        run: ./scripts/audit_public_safety.sh
-      - name: Workflow template smoke test
-        run: |
-          for workflow in issue-triage pr-review release-prep feature-discovery; do
-            tmpdir="$(mktemp -d)"
-            ./scripts/new_workflow.sh "$workflow" "$tmpdir"
-            test -f "$tmpdir/question.md"
-            test -f "$tmpdir/pane-roles.md"
-            test -f "$tmpdir/prompts/pane-1.md"
-            ./scripts/close_workflow.sh "$tmpdir"
-            test -f "$tmpdir/handoff-summary.md"
-          done
+      - name: Run local validation suite
+        run: make test
       - name: Installer smoke test
-        run: |
-          tmpdir="$(mktemp -d)"
-          CLAUDE_WORKBENCH_REPO_URL="$PWD" \
-            CLAUDE_WORKBENCH_INSTALL_DIR="$tmpdir/claude-code-workbench" \
-            CLAUDE_WORKBENCH_SKIP_APP=1 \
-            ./scripts/install.sh
-          test -f "$tmpdir/claude-code-workbench/scripts/launch_claude_tmux.sh"
+        run: make install-smoke

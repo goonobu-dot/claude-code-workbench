@@ -59,6 +59,12 @@ Check your local setup without starting a workbench session:
 ./scripts/doctor.sh
 ```
 
+Run the local validation suite:
+
+```bash
+make test
+```
+
 Create a reusable maintainer workflow folder before launching panes:
 
 ```bash
@@ -170,8 +176,7 @@ This repository intentionally does not include local logs, `.env` files, prompt 
 Before publishing your own fork, run:
 
 ```bash
-./Tests/test_claude_workbench_config.sh
-./scripts/audit_public_safety.sh
+make test
 ```
 
 ## Project Status
