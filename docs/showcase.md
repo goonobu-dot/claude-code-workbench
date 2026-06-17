@@ -25,7 +25,10 @@ The workbench makes that workflow repeatable without building a large platform.
 - `scripts/audit_public_safety.sh` checks for common private-data leaks before publishing.
 - `docs/workflows.md` explains practical pane assignment patterns.
 - `docs/oss-maintainer-use-cases.md` maps the tool to maintainer workflows.
+- `docs/workflow-sharing.md` explains how to export and import generated workflow folders safely.
 - `scripts/doctor.sh` checks a user's local setup before launch.
+- `scripts/export_workflow.sh` packages markdown workflow output for sharing after checking for common private-data leaks.
+- `scripts/import_workflow.sh` refuses unsafe archive paths before unpacking shared workflows.
 
 ## Boundary
 

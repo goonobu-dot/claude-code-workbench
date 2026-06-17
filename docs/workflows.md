@@ -65,3 +65,23 @@ Before sharing workbench output:
 - remove private screenshots
 - remove terminal logs with account names or tokens
 - keep generated research output separate from source code
+
+For a portable markdown-only bundle, use:
+
+```bash
+./scripts/export_workflow.sh "$HOME/ClaudeCodeWorkbench/Idea"
+```
+
+To review a shared archive safely, use:
+
+```bash
+./scripts/import_workflow.sh ./Idea-workflow-export.tar.gz
+```
+
+Before publishing the repository itself:
+
+```bash
+make test
+```
+
+See [workflow sharing](workflow-sharing.md) for the export/import safety boundaries.

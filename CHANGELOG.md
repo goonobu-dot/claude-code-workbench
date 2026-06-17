@@ -15,6 +15,7 @@
 - Added `scripts/export_workflow.sh` for sharing markdown workflow folders with private-data checks.
 - Added `scripts/import_workflow.sh` for safely unpacking shared workflow archives.
 - Added `docs/workflow-sharing.md` with export/import usage and safety boundaries.
+- Connected workflow sharing to the showcase and workflow safety checklist.
 
 ## v0.5.0
 
