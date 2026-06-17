@@ -23,6 +23,8 @@ make doctor-report
 The doctor checks:
 
 - `tmux`
+- `git`
+- `python3`
 - Claude Code CLI command discovery
 - required workbench scripts
 - public safety audit status

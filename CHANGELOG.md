@@ -36,6 +36,7 @@
 - Added `docs/architecture.md`.
 - Added `scripts/check_docs_links.sh` to catch broken local documentation links in CI.
 - Added `make release-check` for pre-release validation.
+- Extended `doctor.sh` to check for `git` and `python3`.
 
 ## v0.5.0
 

@@ -90,6 +90,8 @@ say "Claude Code Workbench doctor"
 say
 
 check_command "tmux" "${TMUX_BIN:-tmux}" "Install tmux with Homebrew: brew install tmux"
+check_command "git" "git" "Install Git or Xcode Command Line Tools."
+check_command "python3" "python3" "Install Python 3 or Xcode Command Line Tools."
 
 if [[ -n "${CLAUDE_WORKBENCH_COMMAND:-}" ]]; then
   if command -v "$CLAUDE_WORKBENCH_COMMAND" >/dev/null 2>&1; then
