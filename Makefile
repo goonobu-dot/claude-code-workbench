@@ -1,4 +1,4 @@
-.PHONY: help doctor doctor-report first-run demo test syntax safety smoke install-smoke release-check
+.PHONY: help doctor doctor-report first-run demo demo-transcript test syntax safety smoke install-smoke release-check
 
 help:
 	@printf '%s\n' \
@@ -7,6 +7,7 @@ help:
 		'  make doctor-report Write doctor-report.md for bug reports' \
 		'  make first-run     Run doctor, demo, and workflow discovery' \
 		'  make demo          Generate, validate, and close a temporary demo workflow' \
+		'  make demo-transcript Write docs/demo-transcript.md for GitHub readers' \
 		'  make test          Run config, syntax, safety, and workflow smoke tests' \
 		'  make syntax        Check shell script syntax' \
 		'  make safety        Run public safety audit' \
@@ -34,6 +35,9 @@ demo:
 	./scripts/validate_workflow.sh "$$tmpdir" >/dev/null; \
 	./scripts/close_workflow.sh "$$tmpdir" >/dev/null; \
 	printf 'Demo workflow ready: %s\n' "$$tmpdir"
+
+demo-transcript:
+	./scripts/write_demo_transcript.sh docs/demo-transcript.md
 
 test: syntax
 	./Tests/test_claude_workbench_config.sh

@@ -37,6 +37,9 @@ The fastest no-risk preview is `make first-run`: it checks your machine, creates
 a temporary demo workflow, closes it into a handoff summary, and lists available
 workflow templates.
 
+Read [docs/demo-transcript.md](docs/demo-transcript.md) to see the expected
+output shape before running anything locally.
+
 ## Who This Is For
 
 - OSS maintainers who need faster issue triage, pull request review, release preparation, or security screening.
@@ -232,6 +235,7 @@ See also:
 - [docs/one-minute-demo.md](docs/one-minute-demo.md)
 - [docs/evaluation-guide.md](docs/evaluation-guide.md)
 - [docs/install.md](docs/install.md)
+- [docs/demo-transcript.md](docs/demo-transcript.md)
 - [docs/commands.md](docs/commands.md)
 - [docs/architecture.md](docs/architecture.md)
 - [docs/quality-gates.md](docs/quality-gates.md)

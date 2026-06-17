@@ -52,6 +52,7 @@
 - Added README sections for target users, five-minute value, example outputs, and usage reports.
 - Added security triage, documentation improvement, and dependency update example workflows.
 - Added `docs/install.md`, `make first-run`, and `scripts/uninstall.sh` to reduce first-time setup friction.
+- Added `docs/demo-transcript.md` and `make demo-transcript` for install-free evaluation from GitHub.
 
 ## v0.5.0
 

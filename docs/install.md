@@ -27,6 +27,9 @@ make first-run
 `make first-run` runs the local doctor, creates a temporary demo workflow, closes
 it into a handoff summary, and lists available workflow templates.
 
+If you want to inspect the flow before running commands, read
+[docs/demo-transcript.md](demo-transcript.md).
+
 ## Try Without Installing
 
 Clone first if you want to inspect the scripts before running the installer:
