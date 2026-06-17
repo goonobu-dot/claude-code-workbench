@@ -174,6 +174,7 @@ See also:
 
 - [docs/oss-maintainer-use-cases.md](docs/oss-maintainer-use-cases.md)
 - [docs/showcase.md](docs/showcase.md)
+- [docs/why.md](docs/why.md)
 - [docs/one-minute-demo.md](docs/one-minute-demo.md)
 - [docs/commands.md](docs/commands.md)
 - [docs/architecture.md](docs/architecture.md)

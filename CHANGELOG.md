@@ -39,6 +39,7 @@
 - Extended `doctor.sh` to check for `git` and `python3`.
 - Added `make demo` to the README Quick Start.
 - Updated contributor guidance for release checks, doctor reports, and workflow validation.
+- Added `docs/why.md`.
 
 ## v0.5.0
 
