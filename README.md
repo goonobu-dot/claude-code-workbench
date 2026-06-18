@@ -12,6 +12,13 @@ This is a focused public version of a real local workflow: launch several Claude
 
 This project is not affiliated with Anthropic.
 
+## Beginner-Friendly Guides
+
+New to this project? Start with a plain-language explanation:
+
+- [English beginner guide](docs/BEGINNER_GUIDE.md)
+- [日本語のやさしい解説](docs/BEGINNER_GUIDE.ja.md)
+
 ![Claude Code Workbench terminal preview](docs/assets/workbench-preview.svg)
 
 ## Install In 60 Seconds
