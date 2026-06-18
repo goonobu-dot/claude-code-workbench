@@ -19,6 +19,13 @@ New to this project? Start with a plain-language explanation:
 - [English beginner guide](docs/BEGINNER_GUIDE.md)
 - [日本語のやさしい解説](docs/BEGINNER_GUIDE.ja.md)
 
+## Start Here
+
+Choose the shortest path for your situation:
+
+- [Start Here](docs/START_HERE.md) / [まずここから](docs/START_HERE.ja.md): understand the project in the first 3 minutes.
+- [Use Cases](docs/USE_CASES.md) / [ユースケース](docs/USE_CASES.ja.md): pick a practical workflow such as issue triage, PR review, release prep, or feature discovery.
+
 ![Claude Code Workbench terminal preview](docs/assets/workbench-preview.svg)
 
 ## Install In 60 Seconds
